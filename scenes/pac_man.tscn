@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://cvlqirrfxsm0w"]
+
+[ext_resource type="Texture2D" uid="uid://blj118uhder33" path="res://assets/sprites/pacman_small.png" id="1_1rxq5"]
+[ext_resource type="Script" uid="uid://c23h0i8a2gcnm" path="res://scripts/pac_man.gd" id="1_lst2b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lst2b"]
+atlas = ExtResource("1_1rxq5")
+region = Rect2(0, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0qxo"]
+atlas = ExtResource("1_1rxq5")
+region = Rect2(13, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyx4w"]
+atlas = ExtResource("1_1rxq5")
+region = Rect2(26, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj63t"]
+atlas = ExtResource("1_1rxq5")
+region = Rect2(39, 0, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_81mp2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lst2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0qxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyx4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj63t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uyx4w"]
+radius = 2.0
+
+[node name="PacMan" type="Area2D" unique_id=603066958]
+collision_layer = 28
+collision_mask = 28
+script = ExtResource("1_lst2b")
+
+[node name="PacManSprite" type="AnimatedSprite2D" parent="." unique_id=909565145]
+sprite_frames = SubResource("SpriteFrames_81mp2")
+autoplay = "default"
+frame_progress = 0.1366355
+
+[node name="Collidor" type="CollisionShape2D" parent="." unique_id=1833932625]
+shape = SubResource("CircleShape2D_uyx4w")
+
+[node name="CollisionCheckerDown" type="RayCast2D" parent="." unique_id=1683832325]
+target_position = Vector2(0, 4.5)
+
+[node name="CollisionCheckerDown2" type="RayCast2D" parent="." unique_id=520545268]
+position = Vector2(-4, 0)
+target_position = Vector2(0, 4.5)
+
+[node name="CollisionCheckerDown3" type="RayCast2D" parent="." unique_id=1285269596]
+position = Vector2(4, 0)
+target_position = Vector2(0, 4.5)
+
+[node name="CollisionCheckerLeft" type="RayCast2D" parent="." unique_id=340288102]
+target_position = Vector2(-4.5, 0)
+
+[node name="CollisionCheckerLeft2" type="RayCast2D" parent="." unique_id=295924113]
+position = Vector2(0, -4)
+target_position = Vector2(-4.5, 0)
+
+[node name="CollisionCheckerLeft3" type="RayCast2D" parent="." unique_id=1525736024]
+position = Vector2(0, 4)
+target_position = Vector2(-4.5, 0)
+
+[node name="CollisionCheckerUp" type="RayCast2D" parent="." unique_id=1938749744]
+target_position = Vector2(0, -4.5)
+
+[node name="CollisionCheckerUp2" type="RayCast2D" parent="." unique_id=749224389]
+position = Vector2(-4, 0)
+target_position = Vector2(0, -4.5)
+
+[node name="CollisionCheckerUp3" type="RayCast2D" parent="." unique_id=1235006676]
+position = Vector2(4, 0)
+target_position = Vector2(0, -4.5)
+
+[node name="CollisionCheckerRight" type="RayCast2D" parent="." unique_id=1289870502]
+target_position = Vector2(4.5, 0)
+
+[node name="CollisionCheckerRight2" type="RayCast2D" parent="." unique_id=1505065988]
+position = Vector2(0, -4)
+target_position = Vector2(4.5, 0)
+
+[node name="CollisionCheckerRight3" type="RayCast2D" parent="." unique_id=335795012]
+position = Vector2(0, 4)
+target_position = Vector2(4.5, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=1115929094]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

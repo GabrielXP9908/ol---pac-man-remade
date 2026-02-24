@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bt61pru1t8i8q"]
+
+[ext_resource type="Texture2D" uid="uid://c0kx3vwjnloje" path="res://assets/sprites/button/normal.png" id="1_cs5ya"]
+[ext_resource type="FontFile" uid="uid://rs023qm5m8ga" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_fgkus"]
+[ext_resource type="Texture2D" uid="uid://debeud0y27c0i" path="res://assets/sprites/button/pressed.png" id="2_mykxm"]
+[ext_resource type="PackedScene" uid="uid://c0wel1r1o1fqb" path="res://scenes/pac_man_(unplayable).tscn" id="2_sa3yf"]
+[ext_resource type="Script" uid="uid://cwu8m7uk22q1" path="res://scripts/pac_man_(unplayable).gd" id="3_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://6mjlqpcx583" path="res://assets/sprites/button/hovered.png" id="3_tklts"]
+[ext_resource type="Texture2D" uid="uid://bo062s6wjbeac" path="res://assets/sprites/button/disabled.png" id="4_u26n3"]
+[ext_resource type="Texture2D" uid="uid://bfsxjgjukhqjx" path="res://assets/sprites/button/focused.png" id="5_ib7db"]
+[ext_resource type="Script" uid="uid://dc50f3bmspml0" path="res://scripts/start_game.gd" id="6_mykxm"]
+
+[node name="TitleScreen" type="Node2D" unique_id=1129280298]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1276637089]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1100292161]
+offset_left = 344.0
+offset_top = 285.0
+offset_right = 799.0
+offset_bottom = 346.0
+texture_normal = ExtResource("1_cs5ya")
+texture_pressed = ExtResource("2_mykxm")
+texture_hover = ExtResource("3_tklts")
+texture_disabled = ExtResource("4_u26n3")
+texture_focused = ExtResource("5_ib7db")
+stretch_mode = 0
+script = ExtResource("6_mykxm")
+
+[node name="Label" type="Label" parent="." unique_id=1098293741]
+offset_left = 330.0
+offset_top = 195.0
+offset_right = 840.0
+offset_bottom = 235.0
+theme_override_fonts/font = ExtResource("1_fgkus")
+theme_override_font_sizes/font_size = 40
+text = "PacMan Remade"
+
+[node name="Label2" type="Label" parent="." unique_id=416548836]
+offset_left = 368.0
+offset_top = 297.0
+offset_right = 776.0
+offset_bottom = 329.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_fgkus")
+theme_override_font_sizes/font_size = 32
+text = "PacMan Remade"
+
+[node name="PacMan (unplayable)" parent="." unique_id=1481966996 instance=ExtResource("2_sa3yf")]
+position = Vector2(-64, 584)
+scale = Vector2(4, 4)
+autoplay = "default"
+script = ExtResource("3_s4lrb")
+
+[node name="Timer" type="Timer" parent="PacMan (unplayable)" unique_id=1235472530]
+wait_time = 0.05
+autostart = true
+
+[connection signal="button_down" from="TextureButton" to="TextureButton" method="_on_button_down"]
+[connection signal="timeout" from="PacMan (unplayable)/Timer" to="PacMan (unplayable)" method="_on_timer_timeout"]

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://c0wel1r1o1fqb"]
+
+[ext_resource type="Texture2D" uid="uid://i5vhuhjq6cbo" path="res://assets/sprites/pacman.png" id="1_jl46c"]
+[ext_resource type="FontFile" uid="uid://rs023qm5m8ga" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_8yh7s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yh7s"]
+atlas = ExtResource("1_jl46c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvorp"]
+atlas = ExtResource("1_jl46c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0thqq"]
+atlas = ExtResource("1_jl46c")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc6oe"]
+atlas = ExtResource("1_jl46c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kjvmx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yh7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvorp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0thqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc6oe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="PacMan (unplayable)" type="AnimatedSprite2D" unique_id=1481966996]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_kjvmx")
+frame_progress = 0.24414791
+
+[node name="Label3" type="Label" parent="." unique_id=1683215993]
+offset_left = -100.0
+offset_top = -500.0
+offset_right = -19.0
+offset_bottom = -481.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_8yh7s")
+theme_override_font_sizes/font_size = 8
+text = "RIP MICHAEL
+We love you"
+horizontal_alignment = 1

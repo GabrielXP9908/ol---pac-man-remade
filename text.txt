@@ -1,0 +1,10 @@
+Collision Layers:
+	1 Move Collidor für Player
+	2 Move Collidor für Geister
+	3 Teleporter
+	4 Coins/Points
+	5 Player -> Geister Check
+
+
+# Right now doing!!!
+	remaking pacman raycast for less movement bugs

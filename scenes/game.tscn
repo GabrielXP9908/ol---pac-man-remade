@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cqidcv4sb34vm"]
+
+[ext_resource type="Script" uid="uid://rllmhe4tr5o7" path="res://scripts/game_manager.gd" id="1_lbhrr"]
+[ext_resource type="Script" uid="uid://bvv8wwsjiuphv" path="res://scripts/camera.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bt61pru1t8i8q" path="res://scenes/title_screen.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://c3ljfn4h6uq8w" path="res://scenes/level.tscn" id="2_yqjtg"]
+
+[node name="Game" type="Node" unique_id=1473848109]
+
+[node name="GameManager" type="Node" parent="." unique_id=762801973]
+unique_name_in_owner = true
+script = ExtResource("1_lbhrr")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1688483230]
+unique_name_in_owner = true
+position = Vector2(576, 324)
+script = ExtResource("1_lnu2h")
+
+[node name="TitleScreen" parent="." unique_id=1665888286 instance=ExtResource("1_uwrxv")]
+
+[node name="Level" parent="." unique_id=373382970 instance=ExtResource("2_yqjtg")]
+position = Vector2(0, 715)
+scale = Vector2(2, 2)
