@@ -4,6 +4,12 @@ extends Area2D
 @onready var collision_checker_left: RayCast2D = $CollisionCheckerLeft
 @onready var collision_checker_up: RayCast2D = $CollisionCheckerUp
 @onready var collision_checker_right: RayCast2D = $CollisionCheckerRight
+
+var colliding_up := true
+var colliding_right := false
+var colliding_down := true
+var colliding_left := false
+
 @onready var timer: Timer = $Timer
 
 var store_one_input := 0 # 0 = _empty, 1 = up, 2 = right, 3 = down, 4 = up 
@@ -136,13 +142,13 @@ func _on_timer_timeout() -> void:
 	timer.start()
 	if (direction == 0):
 		pass
-	elif (direction == 1 and !collision_checker_up.is_colliding()):
+	elif (direction == 1 and !colliding_up):
 		position.y -= 1
-	elif (direction == 2 and !collision_checker_right.is_colliding()):
+	elif (direction == 2 and !colliding_right):
 		position.x += 1
-	elif (direction == 3 and !collision_checker_down.is_colliding()):
+	elif (direction == 3 and !colliding_down):
 		position.y += 1
-	elif (direction == 4 and !collision_checker_left.is_colliding()):
+	elif (direction == 4 and !colliding_left):
 		position.x -= 1
 	else:
 		direction = 0
@@ -150,8 +156,39 @@ func _on_timer_timeout() -> void:
 	print(direction)
 	print(store_one_input)
 
+
+
 func _on_gamestate_update(new_gamestate_id: int):
 	if (new_gamestate_id != 1):
 		timer.stop()
 	else:
 		timer.start()
+
+
+
+
+
+
+func _on_collision_up_body_entered(body: Node2D) -> void:
+	colliding_up = true
+
+func _on_collision_up_body_exited(body: Node2D) -> void:
+	colliding_up = false
+
+func _on_collision_right_body_entered(body: Node2D) -> void:
+	colliding_right = true
+
+func _on_collision_right_body_exited(body: Node2D) -> void:
+	colliding_right = false
+
+func _on_collision_down_body_entered(body: Node2D) -> void:
+	colliding_down = true
+
+func _on_collision_down_body_exited(body: Node2D) -> void:
+	colliding_down = false
+
+func _on_collision_left_body_entered(body: Node2D) -> void:
+	colliding_left = true
+
+func _on_collision_left_body_exited(body: Node2D) -> void:
+	colliding_left = false

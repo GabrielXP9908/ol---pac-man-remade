@@ -42,6 +42,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_uyx4w"]
 radius = 2.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lst2b"]
+size = Vector2(6, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0qxo"]
+size = Vector2(0, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyx4w"]
+size = Vector2(6, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dj63t"]
+size = Vector2(0, 6)
+
 [node name="PacMan" type="Area2D" unique_id=603066958]
 collision_layer = 28
 collision_mask = 28
@@ -58,48 +70,50 @@ shape = SubResource("CircleShape2D_uyx4w")
 [node name="CollisionCheckerDown" type="RayCast2D" parent="." unique_id=1683832325]
 target_position = Vector2(0, 4.5)
 
-[node name="CollisionCheckerDown2" type="RayCast2D" parent="." unique_id=520545268]
-position = Vector2(-4, 0)
-target_position = Vector2(0, 4.5)
-
-[node name="CollisionCheckerDown3" type="RayCast2D" parent="." unique_id=1285269596]
-position = Vector2(4, 0)
-target_position = Vector2(0, 4.5)
-
 [node name="CollisionCheckerLeft" type="RayCast2D" parent="." unique_id=340288102]
-target_position = Vector2(-4.5, 0)
-
-[node name="CollisionCheckerLeft2" type="RayCast2D" parent="." unique_id=295924113]
-position = Vector2(0, -4)
-target_position = Vector2(-4.5, 0)
-
-[node name="CollisionCheckerLeft3" type="RayCast2D" parent="." unique_id=1525736024]
-position = Vector2(0, 4)
 target_position = Vector2(-4.5, 0)
 
 [node name="CollisionCheckerUp" type="RayCast2D" parent="." unique_id=1938749744]
 target_position = Vector2(0, -4.5)
 
-[node name="CollisionCheckerUp2" type="RayCast2D" parent="." unique_id=749224389]
-position = Vector2(-4, 0)
-target_position = Vector2(0, -4.5)
-
-[node name="CollisionCheckerUp3" type="RayCast2D" parent="." unique_id=1235006676]
-position = Vector2(4, 0)
-target_position = Vector2(0, -4.5)
-
 [node name="CollisionCheckerRight" type="RayCast2D" parent="." unique_id=1289870502]
 target_position = Vector2(4.5, 0)
 
-[node name="CollisionCheckerRight2" type="RayCast2D" parent="." unique_id=1505065988]
-position = Vector2(0, -4)
-target_position = Vector2(4.5, 0)
+[node name="BlockCollisionChecker" type="Node2D" parent="." unique_id=736374701]
 
-[node name="CollisionCheckerRight3" type="RayCast2D" parent="." unique_id=335795012]
+[node name="collision_up" type="Area2D" parent="BlockCollisionChecker" unique_id=730207117]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockCollisionChecker/collision_up" unique_id=1215262393]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_lst2b")
+
+[node name="collision_right" type="Area2D" parent="BlockCollisionChecker" unique_id=1356857030]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockCollisionChecker/collision_right" unique_id=1218251862]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_i0qxo")
+
+[node name="collision_down" type="Area2D" parent="BlockCollisionChecker" unique_id=1523014438]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockCollisionChecker/collision_down" unique_id=1453049854]
 position = Vector2(0, 4)
-target_position = Vector2(4.5, 0)
+shape = SubResource("RectangleShape2D_uyx4w")
+
+[node name="collision_left" type="Area2D" parent="BlockCollisionChecker" unique_id=1242512904]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockCollisionChecker/collision_left" unique_id=1805921919]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_dj63t")
 
 [node name="Timer" type="Timer" parent="." unique_id=1115929094]
 wait_time = 0.1
 
+[connection signal="body_entered" from="BlockCollisionChecker/collision_up" to="." method="_on_collision_up_body_entered"]
+[connection signal="body_exited" from="BlockCollisionChecker/collision_up" to="." method="_on_collision_up_body_exited"]
+[connection signal="body_entered" from="BlockCollisionChecker/collision_right" to="." method="_on_collision_right_body_entered"]
+[connection signal="body_exited" from="BlockCollisionChecker/collision_right" to="." method="_on_collision_right_body_exited"]
+[connection signal="body_entered" from="BlockCollisionChecker/collision_down" to="." method="_on_collision_down_body_entered"]
+[connection signal="body_exited" from="BlockCollisionChecker/collision_down" to="." method="_on_collision_down_body_exited"]
+[connection signal="body_entered" from="BlockCollisionChecker/collision_left" to="." method="_on_collision_left_body_entered"]
+[connection signal="body_exited" from="BlockCollisionChecker/collision_left" to="." method="_on_collision_left_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
