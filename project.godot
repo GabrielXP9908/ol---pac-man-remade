@@ -22,7 +22,9 @@ GameManager="*uid://rllmhe4tr5o7"
 [file_customization]
 
 folder_colors={
+"res://OL - Bilder & Vids/": "red",
 "res://assets/": "purple",
+"res://exports/": "teal",
 "res://scenes/": "green",
 "res://scripts/": "orange"
 }
