@@ -8,10 +8,10 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("play"):
-		GameManager.updateScore("add", 20)
-		GameManager.updateHighScore()
+		GameManager.updateScore("add", 1000)
+		GameManager.levels += 1
 
 func _on_gamestate_update(new_gamestate_id: int):
 	if (new_gamestate_id == 0):

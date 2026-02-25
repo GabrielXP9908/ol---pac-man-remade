@@ -1,10 +1,5 @@
 extends Area2D
 
-@onready var collision_checker_down: RayCast2D = $CollisionCheckerDown
-@onready var collision_checker_left: RayCast2D = $CollisionCheckerLeft
-@onready var collision_checker_up: RayCast2D = $CollisionCheckerUp
-@onready var collision_checker_right: RayCast2D = $CollisionCheckerRight
-
 var colliding_up := true
 var colliding_right := false
 var colliding_down := true
@@ -12,108 +7,75 @@ var colliding_left := false
 
 @onready var timer: Timer = $Timer
 
+
+var allow_movement := false
+
 var store_one_input := 0 # 0 = _empty, 1 = up, 2 = right, 3 = down, 4 = up 
 var direction := 0 # 0 = _empty, 1 = up, 2 = right, 3 = down, 4 = up 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.gamestateUpdated.connect(_on_gamestate_update)
+	GameManager.killPacMan.connect(die)
+	GameManager.isInvunrable = false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	#if (Input.is_action_just_pressed("down") or Input.is_action_just_pressed("left") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("right")):
 		#print("test")
+	if allow_movement:
+		if (Input.is_action_just_pressed("up")):
+			store_one_input = 1
+		
+		if (Input.is_action_just_pressed("right")):
+			store_one_input = 2
+		
+		if (Input.is_action_just_pressed("down")):
+			store_one_input = 3
+		
+		if (Input.is_action_just_pressed("left")):
+			store_one_input = 4
 	
-	if (Input.is_action_just_pressed("up")):
-		store_one_input = 1
+#region stored to direction
 	
-	if (Input.is_action_just_pressed("right")):
-		store_one_input = 2
-	
-	if (Input.is_action_just_pressed("down")):
-		store_one_input = 3
-	
-	if (Input.is_action_just_pressed("left")):
-		store_one_input = 4
-	
-	
-#region stored -> direction
 	if (store_one_input != 0):
-		
-		
 		if (store_one_input == 1):
-			if (collision_checker_up.is_colliding()):
+			if (colliding_up):
 				pass
 			else:
-				if (direction == 1):
-					position.y -= 2.5
-				elif (direction == 2):
-					position.x += 2.5
-				elif (direction == 3):
-					position.y += 2.5
-				elif (direction == 4):
-					position.x -= 2.5
-				else:
-					print("Error!!!! at pac_man.gd/_process #1")
 				direction = 1
+				$PacManSprite.play("up")
 				store_one_input = 0
 		elif (store_one_input == 2):
-			if (collision_checker_right.is_colliding()):
+			if (colliding_right):
 				pass
 			else:
-				if (direction == 1):
-					position.y -= 2.5
-				elif (direction == 2):
-					position.x += 2.5
-				elif (direction == 3):
-					position.y += 2.5
-				elif (direction == 4):
-					position.x -= 2.5
-				else:
-					print("Error!!!! at pac_man.gd/_process #1")
 				direction = 2
+				$PacManSprite.play("right")
 				store_one_input = 0
 		elif (store_one_input == 3):
-			if (collision_checker_down.is_colliding()):
+			if (colliding_down):
 				pass
 			else:
-				if (direction == 1):
-					position.y -= 2.5
-				elif (direction == 2):
-					position.x += 2.5
-				elif (direction == 3):
-					position.y += 2.5
-				elif (direction == 4):
-					position.x -= 2.5
-				else:
-					print("Error!!!! at pac_man.gd/_process #1")
 				direction = 3
+				$PacManSprite.play("down")
 				store_one_input = 0
 		elif (store_one_input == 4):
-			if (collision_checker_left.is_colliding()):
+			if (colliding_left):
 				pass
 			else:
-				if (direction == 1):
-					position.y -= 2.5
-				elif (direction == 2):
-					position.x += 2.5
-				elif (direction == 3):
-					position.y += 2.5
-				elif (direction == 4):
-					position.x -= 2.5
-				else:
-					print("Error!!!! at pac_man.gd/_process #1")
 				direction = 4
+				$PacManSprite.play("left")
 				store_one_input = 0
-#endregion
-	
 	
 	#print("--------------")
 	#print(direction)
 	#print("--------------")
 	#print(store_one_input)
 	#print("--------------")
+#endregion
 
 
 func teleporter(entered_map_side: String):
@@ -152,7 +114,6 @@ func _on_timer_timeout() -> void:
 		position.x -= 1
 	else:
 		direction = 0
-	print("test")
 	print(direction)
 	print(store_one_input)
 
@@ -161,34 +122,43 @@ func _on_timer_timeout() -> void:
 func _on_gamestate_update(new_gamestate_id: int):
 	if (new_gamestate_id != 1):
 		timer.stop()
+		allow_movement = false
 	else:
 		timer.start()
+		allow_movement = true
 
 
 
-
-
-
-func _on_collision_up_body_entered(body: Node2D) -> void:
+func _on_collision_up_body_entered(_body: Node2D) -> void:
 	colliding_up = true
 
-func _on_collision_up_body_exited(body: Node2D) -> void:
+func _on_collision_up_body_exited(_body: Node2D) -> void:
 	colliding_up = false
 
-func _on_collision_right_body_entered(body: Node2D) -> void:
+func _on_collision_right_body_entered(_body: Node2D) -> void:
 	colliding_right = true
 
-func _on_collision_right_body_exited(body: Node2D) -> void:
+func _on_collision_right_body_exited(_body: Node2D) -> void:
 	colliding_right = false
 
-func _on_collision_down_body_entered(body: Node2D) -> void:
+func _on_collision_down_body_entered(_body: Node2D) -> void:
 	colliding_down = true
 
-func _on_collision_down_body_exited(body: Node2D) -> void:
+func _on_collision_down_body_exited(_body: Node2D) -> void:
 	colliding_down = false
 
-func _on_collision_left_body_entered(body: Node2D) -> void:
+func _on_collision_left_body_entered(_body: Node2D) -> void:
 	colliding_left = true
 
-func _on_collision_left_body_exited(body: Node2D) -> void:
+func _on_collision_left_body_exited(_body: Node2D) -> void:
 	colliding_left = false
+
+
+#region Live System
+func die():
+	GameManager.lives -= 1
+	direction = 0
+	store_one_input = 0
+	$PacManSprite.play("death")
+	GameManager.isInvunrable = true
+#endregion

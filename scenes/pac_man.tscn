@@ -1,7 +1,18 @@
 [gd_scene format=3 uid="uid://cvlqirrfxsm0w"]
 
 [ext_resource type="Texture2D" uid="uid://blj118uhder33" path="res://assets/sprites/pacman_small.png" id="1_1rxq5"]
+[ext_resource type="Texture2D" uid="uid://blj118uhder33" path="res://assets/sprites/PacMan/pacman_right.png" id="1_1rxq5"]
 [ext_resource type="Script" uid="uid://c23h0i8a2gcnm" path="res://scripts/pac_man.gd" id="1_lst2b"]
+[ext_resource type="Texture2D" uid="uid://d3pnwe5n1tywt" path="res://assets/sprites/PacMan/pacman_death.png" id="2_81mp2"]
+[ext_resource type="Texture2D" uid="uid://ctibcmsde0gd2" path="res://assets/sprites/PacMan/pacman_down.png" id="3_sp5p5"]
+[ext_resource type="Texture2D" uid="uid://c76vqt2yfcqny" path="res://assets/sprites/PacMan/pacman_left.png" id="4_n1htp"]
+[ext_resource type="Texture2D" uid="uid://5tvga4b2whre" path="res://assets/sprites/PacMan/pacman_up.png" id="6_8wqrm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rtkl"]
+atlas = ExtResource("2_81mp2")
+region = Rect2(0, 0, 15, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt7s3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lst2b"]
 atlas = ExtResource("1_1rxq5")

@@ -7,4 +7,20 @@ Collision Layers:
 
 
 # Right now doing!!!
-	remaking pacman raycast for less movement bugs
+	✅ remaking pacman raycast for less movement bugs
+	✅ Lives System
+	✅ Animations for PacMan
+	✅ Below Map Icons added
+	✅ 
+	
+	❎ Geister implementieren
+	❎ Movement Speed koreewkt (ChatGPT & research)
+	❎ Spped im Tunnel
+	❎ Level und points mechanik
+	❎ 
+	❎ 
+	❎ 
+	❎ 
+	❎ 
+	❎ 
+	❎ 

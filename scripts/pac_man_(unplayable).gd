@@ -6,7 +6,7 @@ extends AnimatedSprite2D
 var secret_presses := 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if (position.x >= 1300):
 		position.x = -50
 	
