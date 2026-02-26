@@ -27,6 +27,7 @@ folder_colors={
 "res://assets/": "purple",
 "res://assets/sprites/levels/": "pink",
 "res://assets/sprites/lives/": "pink",
+"res://assets/sprites/points/": "pink",
 "res://exports/": "teal",
 "res://scenes/": "green",
 "res://scripts/": "orange"

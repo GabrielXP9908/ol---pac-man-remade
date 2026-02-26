@@ -78,6 +78,10 @@ func _process(_delta: float) -> void:
 #endregion
 
 
+func isPacMan():
+	print("Yes, me PacMan!")
+
+
 func teleporter(entered_map_side: String):
 	if (entered_map_side == "left"):
 		direction = 4

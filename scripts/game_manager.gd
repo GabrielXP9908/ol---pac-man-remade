@@ -23,6 +23,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if (levels > 0 and levels < 20):
 		levels_capped = levels
+	updateHighScore()
 
 func updateScore(operation: String, count: int):
 	if (operation=="add"):

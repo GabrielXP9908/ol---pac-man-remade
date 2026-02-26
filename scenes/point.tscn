@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://be81101u1g4lu"]
+
+[ext_resource type="Texture2D" uid="uid://o1ny0fbmg0t7" path="res://assets/sprites/points/empty.png" id="1_imn7a"]
+[ext_resource type="Texture2D" uid="uid://f023e3r36244" path="res://assets/sprites/points/large.png" id="2_tw0ea"]
+[ext_resource type="Texture2D" uid="uid://sgmuvfxpel8l" path="res://assets/sprites/points/small.png" id="3_qqg1k"]
+[ext_resource type="Script" uid="uid://bt1u7tk0tky64" path="res://scripts/points.gd" id="4_tw0ea"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dnso1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_imn7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tw0ea")
+}],
+"loop": true,
+"name": &"large",
+"speed": 6.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qqg1k")
+}],
+"loop": false,
+"name": &"small",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olwhu"]
+radius = 3.0
+
+[node name="point" type="AnimatedSprite2D" unique_id=836833284]
+sprite_frames = SubResource("SpriteFrames_dnso1")
+animation = &"small"
+script = ExtResource("4_tw0ea")
+
+[node name="point" type="Area2D" parent="." unique_id=403774858]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="point" unique_id=632443244]
+shape = SubResource("CircleShape2D_olwhu")
+
+[connection signal="area_entered" from="point" to="." method="_on_point_area_entered"]

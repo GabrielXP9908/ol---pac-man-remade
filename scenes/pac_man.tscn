@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ctibcmsde0gd2" path="res://assets/sprites/PacMan/pacman_down.png" id="3_sp5p5"]
 [ext_resource type="Texture2D" uid="uid://c76vqt2yfcqny" path="res://assets/sprites/PacMan/pacman_left.png" id="4_n1htp"]
 [ext_resource type="Texture2D" uid="uid://5tvga4b2whre" path="res://assets/sprites/PacMan/pacman_up.png" id="6_8wqrm"]
+[ext_resource type="Script" uid="uid://c8xk0rqwx2yae" path="res://scenes/coin_collector.gd" id="7_sp5p5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1rtkl"]
 atlas = ExtResource("2_81mp2")
@@ -253,6 +254,9 @@ size = Vector2(6, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dj63t"]
 size = Vector2(0, 6)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_81mp2"]
+radius = 4.0
+
 [node name="PacMan" type="Area2D" unique_id=603066958]
 collision_layer = 28
 collision_mask = 28
@@ -294,6 +298,12 @@ shape = SubResource("RectangleShape2D_dj63t")
 
 [node name="Timer" type="Timer" parent="." unique_id=1115929094]
 wait_time = 0.025
+
+[node name="CoinCollector" type="Area2D" parent="." unique_id=636009588]
+script = ExtResource("7_sp5p5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinCollector" unique_id=2049162733]
+shape = SubResource("CircleShape2D_81mp2")
 
 [connection signal="body_entered" from="BlockCollisionChecker/collision_up" to="." method="_on_collision_up_body_entered"]
 [connection signal="body_exited" from="BlockCollisionChecker/collision_up" to="." method="_on_collision_up_body_exited"]
