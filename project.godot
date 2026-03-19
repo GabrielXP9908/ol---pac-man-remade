@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 GameManager="*uid://rllmhe4tr5o7"
 DevExitGame="*uid://by501hgatujjw"
 
+[display]
+
+window/size/resizable=false
+window/size/minimize_disabled=true
+window/size/maximize_disabled=true
+
 [file_customization]
 
 folder_colors={
