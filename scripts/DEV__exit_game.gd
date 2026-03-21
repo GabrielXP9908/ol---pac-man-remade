@@ -8,3 +8,7 @@ func _process(_delta: float) -> void:
 		else:
 			print("Scucess! Exiting because of User exit Input!")
 			get_tree().quit(0)
+	
+	if Input.is_action_just_pressed("DEV__lives_to_0"):
+		GameManager.lives = 1
+		GameManager.killPacMan.emit()

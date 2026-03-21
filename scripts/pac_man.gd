@@ -9,19 +9,22 @@ var colliding_left := false
 
 
 var allow_movement := false
+var local_gamestate := 0
 
 var store_one_input := 0 # 0 = _empty, 1 = up, 2 = right, 3 = down, 4 = up 
 var direction := 0 # 0 = _empty, 1 = up, 2 = right, 3 = down, 4 = up 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameManager.gamestateUpdated.connect(_on_gamestate_update)
+	GameStateManager.gamestateupdated.connect(_on_gamestate_update)
 	GameManager.killPacMan.connect(die)
-	GameManager.isInvunrable = false
 	
+	if local_gamestate != GameStateManager.gamestate:
+		GameStateManager.gamestateupdated.emit(GameStateManager.gamestate)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	
 	
 	#if (Input.is_action_just_pressed("down") or Input.is_action_just_pressed("left") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("right")):
 		#print("test")
@@ -124,7 +127,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_gamestate_update(new_gamestate_id: int):
-	if (new_gamestate_id != 1):
+	if (new_gamestate_id != 2):
 		timer.stop()
 		allow_movement = false
 	else:
@@ -164,5 +167,7 @@ func die():
 	direction = 0
 	store_one_input = 0
 	$PacManSprite.play("death")
-	GameManager.isInvunrable = true
+	#ghosts need to listen to die() to despawn
+	if (GameManager.lives <= 0):
+		GameManager.GameOver()
 #endregion

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ctibcmsde0gd2" path="res://assets/sprites/PacMan/pacman_down.png" id="3_sp5p5"]
 [ext_resource type="Texture2D" uid="uid://c76vqt2yfcqny" path="res://assets/sprites/PacMan/pacman_left.png" id="4_n1htp"]
 [ext_resource type="Texture2D" uid="uid://5tvga4b2whre" path="res://assets/sprites/PacMan/pacman_up.png" id="6_8wqrm"]
-[ext_resource type="Script" uid="uid://c8xk0rqwx2yae" path="res://scenes/coin_collector.gd" id="7_sp5p5"]
+[ext_resource type="Script" uid="uid://c8xk0rqwx2yae" path="res://scripts/coin_collector.gd" id="7_sp5p5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1rtkl"]
 atlas = ExtResource("2_81mp2")

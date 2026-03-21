@@ -3,7 +3,6 @@ extends Node
 var score := 0
 var highscore := 0
 var recived_extra_live := false
-var isInvunrable := false
 var lives := 4
 var levels := 1
 var levels_capped := 0
@@ -14,6 +13,7 @@ var gamestate = 0 # 0 = TitleScreen, 1 = Game, 2 = Ingame, 3 = End Screen
 #signal highScoreUpdated(new_highscore: int)
 signal gamestateUpdated(new_gamestate_id: int)
 signal killPacMan()
+signal gameOver(score: int, level: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -63,3 +63,7 @@ func updateExtraLive():
 
 func PacManDieNow():
 	killPacMan.emit()
+
+func GameOver():
+	gameOver.emit(score, levels)
+	GameStateManager.updategamestate(0)

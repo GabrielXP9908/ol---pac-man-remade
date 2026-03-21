@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://4xjtper1r3n0"]
+
+[ext_resource type="Script" uid="uid://u5s0ygillhfw" path="res://scripts/LeaderboardUI_example.gd" id="1_n6nvk"]
+[ext_resource type="Texture2D" uid="uid://c0kx3vwjnloje" path="res://assets/sprites/button/normal.png" id="2_xa581"]
+[ext_resource type="Texture2D" uid="uid://debeud0y27c0i" path="res://assets/sprites/button/pressed.png" id="3_hr3dl"]
+[ext_resource type="Texture2D" uid="uid://6mjlqpcx583" path="res://assets/sprites/button/hovered.png" id="4_jftfo"]
+
+[node name="Control" type="Control" unique_id=2097240]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_n6nvk")
+
+[node name="RegisterPanel" type="Panel" parent="." unique_id=1540840061]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 186.0
+offset_right = 841.0
+offset_bottom = 504.0
+
+[node name="NameInput" type="LineEdit" parent="RegisterPanel" unique_id=308280621]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 124.0
+offset_right = 381.0
+offset_bottom = 155.0
+text = "name reg"
+
+[node name="PwInput" type="LineEdit" parent="RegisterPanel" unique_id=869235038]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 160.0
+offset_right = 381.0
+offset_bottom = 191.0
+text = "pw"
+
+[node name="RegisterBtn" type="TextureButton" parent="RegisterPanel" unique_id=1949363569]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 197.0
+offset_right = 277.0
+offset_bottom = 218.0
+texture_normal = ExtResource("2_xa581")
+texture_pressed = ExtResource("3_hr3dl")
+texture_hover = ExtResource("4_jftfo")
+stretch_mode = 0
+
+[node name="ToLoginBtn" type="TextureButton" parent="RegisterPanel" unique_id=560003073]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 197.0
+offset_right = 370.0
+offset_bottom = 218.0
+texture_normal = ExtResource("2_xa581")
+texture_pressed = ExtResource("3_hr3dl")
+texture_hover = ExtResource("4_jftfo")
+stretch_mode = 0
+
+[node name="LoginPanel" type="Panel" parent="." unique_id=954065162]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 197.0
+offset_right = 854.0
+offset_bottom = 478.0
+
+[node name="NameInput" type="LineEdit" parent="LoginPanel" unique_id=1707782977]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 92.0
+offset_right = 328.0
+offset_bottom = 123.0
+text = "Name"
+
+[node name="PwInput" type="LineEdit" parent="LoginPanel" unique_id=1225630370]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 127.0
+offset_right = 328.0
+offset_bottom = 158.0
+text = "PW"
+
+[node name="LoginBtn" type="TextureButton" parent="LoginPanel" unique_id=884645077]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 167.0
+offset_right = 246.0
+offset_bottom = 187.0
+texture_normal = ExtResource("2_xa581")
+texture_pressed = ExtResource("3_hr3dl")
+texture_hover = ExtResource("4_jftfo")
+stretch_mode = 0
+
+[node name="ToRegisterBtn" type="TextureButton" parent="LoginPanel" unique_id=437936991]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 167.0
+offset_right = 319.0
+offset_bottom = 187.0
+texture_normal = ExtResource("2_xa581")
+texture_pressed = ExtResource("3_hr3dl")
+texture_hover = ExtResource("4_jftfo")
+stretch_mode = 0
