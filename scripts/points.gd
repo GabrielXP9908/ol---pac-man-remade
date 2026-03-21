@@ -17,6 +17,7 @@ func _ready() -> void:
 
 func _on_point_area_entered(area: Area2D) -> void:
 	if area.has_method("isPacManCoinCollector"):
+		GameManager.coins += 1
 		if size == Type.small:
 			GameManager.score += 10
 		else:

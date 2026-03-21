@@ -4,10 +4,12 @@ var score := 0
 var highscore := 0
 var recived_extra_live := false
 var lives := 4
-var levels := 1
+var levels := 0
 var levels_capped := 0
 
 var gamestate = 0 # 0 = TitleScreen, 1 = Game, 2 = Ingame, 3 = End Screen
+
+var coins := 0
 
 #signal scoreUpdated(new_score: int)
 #signal highScoreUpdated(new_highscore: int)
@@ -24,6 +26,7 @@ func _process(_delta: float) -> void:
 	if (levels > 0 and levels < 20):
 		levels_capped = levels
 	updateHighScore()
+	levelcompletecheck()
 
 func updateScore(operation: String, count: int):
 	if (operation=="add"):
@@ -67,3 +70,10 @@ func PacManDieNow():
 func GameOver():
 	gameOver.emit(score, levels)
 	GameStateManager.updategamestate(0)
+
+func levelcompletecheck():
+	if (coins == 244):
+		nextLevel()
+
+func nextLevel():
+	GameStateManager.new_gamestate(2)

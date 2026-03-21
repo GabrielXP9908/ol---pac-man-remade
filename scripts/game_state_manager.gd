@@ -27,6 +27,7 @@ func new_gamestate(new_gamestate_id: int):
 		get_tree().change_scene_to_file("res://scenes/Leaderboard.tscn")
 	elif (new_gamestate_id == 2):
 		get_tree().change_scene_to_file("res://scenes/level.tscn")
+		GameManager.score = 0
 		gamestateupdated.emit(gamestate)
 		
 

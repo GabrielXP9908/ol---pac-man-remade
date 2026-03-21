@@ -16,3 +16,5 @@ script = ExtResource("2_wu3ti")
 [node name="GameStateManager" type="Node" parent="." unique_id=1791147093]
 unique_name_in_owner = true
 script = ExtResource("3_wu3ti")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1733415263]

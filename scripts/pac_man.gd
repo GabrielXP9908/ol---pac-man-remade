@@ -18,6 +18,8 @@ var direction := 0 # 0 = _empty, 1 = up, 2 = right, 3 = down, 4 = up
 func _ready() -> void:
 	GameStateManager.gamestateupdated.connect(_on_gamestate_update)
 	GameManager.killPacMan.connect(die)
+	GameManager.levels += 1
+	GameManager.coins = 0
 	
 	if local_gamestate != GameStateManager.gamestate:
 		GameStateManager.gamestateupdated.emit(GameStateManager.gamestate)
@@ -121,8 +123,8 @@ func _on_timer_timeout() -> void:
 		position.x -= 1
 	else:
 		direction = 0
-	print(direction)
-	print(store_one_input)
+	#print(direction)
+	#print(store_one_input)
 
 
 

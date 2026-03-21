@@ -20,6 +20,13 @@ Collision Layers:
 	✅ 
 	✅ 
 	
+	Dran:
+		tile map nav layer machen
+		1ste done = immer laufen auch aus käfig
+		2te in arbeit = nur außerhalb von käfig
+		
+	
+	
 	❎ Geister implementieren
 	❎ Movement Speed koreewkt (ChatGPT & research)
 	❎ Speed im Tunnel
