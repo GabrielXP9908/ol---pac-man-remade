@@ -24,6 +24,8 @@ Collision Layers:
 		tile map nav layer machen
 		1ste done = immer laufen auch aus käfig
 		2te in arbeit = nur außerhalb von käfig
+
+FEHLER BEHEBEN DAS SIE NICHT GEHEN!!!! LEICHT GTÖẞER MACHEN ALS TILES EIG SIND SONST GEHT ES NICHT!!!!
 		
 	
 	
