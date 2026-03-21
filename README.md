@@ -26,7 +26,6 @@ with self-implemented ghost AI, live online leaderboard & persistent player acco
 - [Architecture](#-architecture)
 - [Online Leaderboard System](#-online-leaderboard-system)
 - [Tech Stack](#-tech-stack)
-- [Setup](#-setup)
 
 ---
 
@@ -49,7 +48,7 @@ The game was revolutionary for its time because of its **ghost AI** — each gho
 | `Arrow Keys` / `WASD` | Move Pac-Man |
 | Eat all dots | Clear the level |
 | Eat a **Power Pellet** | Ghosts turn blue and are vulnerable |
-| Eat a **blue ghost** | Bonus points (250 → 500 → 1000 → 2000 per ghost in a chain) |
+| Eat a **blue ghost** | Bonus points (200 → 400 → 800 → 1600 per ghost in a chain) |
 | Avoid normal ghosts | Getting touched = lose a life |
 
 **Tips:**
@@ -71,19 +70,24 @@ The game was revolutionary for its time because of its **ghost AI** — each gho
 | Ghost (2nd in chain) | 400 |
 | Ghost (3rd in chain) | 800 |
 | Ghost (4th in chain) | 1,600 |
-| Cherry (Level 1 fruit) | 100 |
 
 ### Milestones
 
 | Score | Event |
 |---|---|
-| **10,000** | 🎁 Extra life awarded (only once per session) |
+| **10,000** | 🎁 Extra life awarded (once per session) |
+
+### Level Completion
+
+- Each level contains **244 collectible dots** (small dots + power pellets)
+- Collecting all 244 triggers `levelcompletecheck()` and advances to the next level
+- Level counter increments with each completed stage
 
 ### Level Scaling
 
 - Difficulty increases with each level
-- Internal level is **capped at 19** for game balance calculations — beyond that the difficulty stays consistent to avoid the game becoming unplayable
-- Level is tracked separately from difficulty cap and is submitted to the leaderboard
+- Internal level is **capped at 19** for game balance calculations — beyond that difficulty stays consistent to avoid the game becoming unplayable
+- The actual level counter keeps incrementing and is shown on the leaderboard
 
 ### Lives
 
@@ -91,6 +95,12 @@ The game was revolutionary for its time because of its **ghost AI** — each gho
 - Lose a life when touched by a non-frightened ghost
 - Extra life at **10,000 points** (once per session)
 - Game Over when all lives are gone
+
+### Movement System
+
+- Pac-Man moves via a **timer-based pixel-step system** (fires every 25ms)
+- Four directional **collision area sensors** (up, right, down, left) detect walls in real time
+- Input is **buffered** — the last pressed direction is stored and applied as soon as the path clears, enabling smooth corner turns
 
 ---
 
@@ -143,9 +153,10 @@ The game is built around a clean **Autoload (singleton) system** with centralise
 
 | Autoload | Script | Responsibility |
 |---|---|---|
-| `GameManager` | `game_manager.gd` | Score, highscore, lives, level, game signals |
+| `GameManager` | `game_manager.gd` | Score, highscore, lives, level, coin counter, game signals |
 | `GameStateManager` | `game_state_manager.gd` | Scene switching via state ID |
 | `Leaderboard` | `SupabaseLeaderboard.gd` | Supabase connection, player auth, score submission |
+| `DevExitGame` | `DEV__exit_game.gd` | Dev shortcuts (exit game, force lives to 0) |
 
 ### Gamestates
 
@@ -173,18 +184,43 @@ level.tscn
 ```
 ol---pac-man-remade/
 ├── scenes/
-│   ├── title_screen.tscn
-│   ├── Leaderboard.tscn
-│   ├── level.tscn
-│   ├── game.tscn
-│   ├── pac_man.tscn
-│   └── globals.tscn
+│   ├── title_screen.tscn          ← Main Menu with animated Pac-Man
+│   ├── Leaderboard.tscn           ← Register & Login Screen
+│   ├── level.tscn                 ← Active Game (TileMap, dots, ghosts, UI)
+│   ├── globals.tscn               ← Autoload container
+│   ├── pac_man.tscn               ← Pac-Man scene with collision system
+│   ├── pac_man_(unplayable).tscn  ← Decorative title screen Pac-Man
+│   ├── ghost_test.tscn            ← Ghost pathfinding prototype
+│   └── point.tscn                 ← Dot / Power Pellet scene
 ├── scripts/
-│   ├── game_manager.gd           ← Autoload
-│   ├── game_state_manager.gd     ← Autoload
-│   ├── SupabaseLeaderboard.gd    ← Autoload
-│   └── LeaderboardScene.gd
-└── assets/
+│   ├── game_manager.gd            ← Autoload: score, lives, level, signals
+│   ├── game_state_manager.gd      ← Autoload: scene switching
+│   ├── SupabaseLeaderboard.gd     ← Autoload: online leaderboard & auth
+│   ├── DEV__exit_game.gd          ← Autoload: dev tools
+│   ├── LeaderboardUI_example.gd   ← Register/Login UI logic
+│   ├── pac_man.gd                 ← Pac-Man movement & collision
+│   ├── pac_man_(unplayable).gd    ← Title screen animation
+│   ├── ghost_test.gd              ← Ghost AI pathfinding (WIP)
+│   ├── points.gd                  ← Dot collection & scoring
+│   ├── coin_collector.gd          ← Pac-Man coin hitbox
+│   ├── map_and_teleporters.gd     ← Tunnel teleporter logic
+│   ├── lower_ui.gd                ← Lives & level icons
+│   ├── score_texts.gd             ← Score / highscore display
+│   └── start_game.gd              ← Title screen start button
+├── assets/
+│   ├── fonts/                     ← PixelOperator8 (regular + bold)
+│   └── sprites/
+│       ├── PacMan/                ← Directional + death animations
+│       ├── button/                ← UI button states
+│       ├── levels/                ← Level indicator icons (1–19)
+│       ├── lives/                 ← Life counter icons (0–5)
+│       ├── points/                ← Dot sprites (small, large, empty)
+│       ├── pacman_map.png         ← Maze background
+│       └── map_colors.png         ← TileSet atlas
+├── exports/
+│   ├── OL - PacMan Remade.exe     ← Windows build
+│   └── OL - PacMan Remade.html    ← Web build
+└── OL - Bilder & Vids/            ← Screenshots & recordings
 ```
 
 ---
@@ -264,24 +300,6 @@ leaderboard_top10          ← refreshed snapshot every 15 seconds
 | 🔀 | **GitHub** | Version control |
 
 </div>
-
----
-
-## 🚀 Setup
-
-1. Clone the repo and open in **Godot 4.6+**
-2. Register the following **Autoloads** under `Project → Project Settings → Autoload`:
-
-| Name | Path |
-|---|---|
-| `GameManager` | `res://scripts/game_manager.gd` |
-| `GameStateManager` | `res://scripts/game_state_manager.gd` |
-| `Leaderboard` | `res://scripts/SupabaseLeaderboard.gd` |
-
-3. Set **Main Scene** to `res://scenes/title_screen.tscn`
-4. Hit ▶️ Play
-
-> **The Supabase backend is live** — no additional setup needed to use the leaderboard.
 
 ---
 
