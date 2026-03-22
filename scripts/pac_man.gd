@@ -7,7 +7,6 @@ var colliding_left := false
 
 @onready var timer: Timer = $Timer
 
-
 var allow_movement := false
 var local_gamestate := 0
 

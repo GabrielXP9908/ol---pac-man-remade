@@ -169,7 +169,7 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_seks5"]
-radius = 55.00909
+radius = 41.0
 
 [node name="Ghost" type="CharacterBody2D" unique_id=1325077530]
 collision_layer = 0

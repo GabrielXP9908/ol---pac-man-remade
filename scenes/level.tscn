@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://be81101u1g4lu" path="res://scenes/point.tscn" id="32_2e2fo"]
 [ext_resource type="PackedScene" uid="uid://cflqxx30bidwc" path="res://scenes/ghost.tscn" id="34_v3why"]
 [ext_resource type="Script" uid="uid://ddao3ijnimn8g" path="res://scenes/pac_man_location_tracker.gd" id="36_2jdvr"]
+[ext_resource type="Script" uid="uid://dugco2ffkybq2" path="res://scripts/fpscounter_dev.gd" id="36_q4oe8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v3why"]
 
@@ -1403,6 +1404,13 @@ position = Vector2(188, 250)
 [node name="PacManLocationTracker" type="Node2D" parent="AI/NavPoints" unique_id=54090658]
 position = Vector2(92, 147)
 script = ExtResource("36_2jdvr")
+
+[node name="DEV_FPS_counter" type="Label" parent="." unique_id=1459789075]
+offset_left = 52.0
+offset_top = 59.0
+offset_right = 92.0
+offset_bottom = 82.0
+script = ExtResource("36_q4oe8")
 
 [connection signal="area_entered" from="TileMapLayer/TeleporterLeft" to="TileMapLayer" method="_on_teleporter_left_area_entered"]
 [connection signal="area_entered" from="TileMapLayer/TeleporterRight" to="TileMapLayer" method="_on_teleporter_right_area_entered"]

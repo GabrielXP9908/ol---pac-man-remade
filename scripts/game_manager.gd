@@ -19,7 +19,8 @@ signal gameOver(score: int, level: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	Engine.max_fps = 60
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -66,6 +67,11 @@ func PacManDieNow():
 func GameOver():
 	gameOver.emit(score, levels)
 	GameStateManager.updategamestate(0)
+	lives = 4
+	recived_extra_live = false
+	levels = 0
+	score = 0
+	coins = 0
 
 func levelcompletecheck():
 	if (coins == 244):
