@@ -273,24 +273,32 @@ shape = SubResource("CircleShape2D_uyx4w")
 [node name="BlockCollisionChecker" type="Node2D" parent="." unique_id=736374701]
 
 [node name="collision_up" type="Area2D" parent="BlockCollisionChecker" unique_id=730207117]
+collision_layer = 128
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlockCollisionChecker/collision_up" unique_id=1215262393]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_lst2b")
 
 [node name="collision_right" type="Area2D" parent="BlockCollisionChecker" unique_id=1356857030]
+collision_layer = 128
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlockCollisionChecker/collision_right" unique_id=1218251862]
 position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_i0qxo")
 
 [node name="collision_down" type="Area2D" parent="BlockCollisionChecker" unique_id=1523014438]
+collision_layer = 128
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlockCollisionChecker/collision_down" unique_id=1453049854]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_uyx4w")
 
 [node name="collision_left" type="Area2D" parent="BlockCollisionChecker" unique_id=1242512904]
+collision_layer = 128
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlockCollisionChecker/collision_left" unique_id=1805921919]
 position = Vector2(-4, 0)

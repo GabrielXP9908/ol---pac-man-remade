@@ -27,7 +27,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	
-	
+	print("=== DEBUG ===")
+	print("Allow Movement: ", allow_movement)
+	print("Colliding Up:   ", colliding_up)
+	print("Colliding Right:", colliding_right)
+	print("Colliding Down: ", colliding_down)
+	print("Colliding Left: ", colliding_left)
+	print("=============")
 	#if (Input.is_action_just_pressed("down") or Input.is_action_just_pressed("left") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("right")):
 		#print("test")
 	if allow_movement:

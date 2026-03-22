@@ -7,6 +7,8 @@
 radius = 3.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1325077530]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_n7aah")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1915505111]
