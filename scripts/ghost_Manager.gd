@@ -62,17 +62,20 @@ func _process(delta: float) -> void:
 	
 	
 	#region Phases
-	if (Phase == Phases.Scatter):
-		if (GhostType == Ghost.Clyde):
-			Goal = get_node("/root/Level/NavHelper/NavPoints/Clyde/" + str(randi_range(1,10)))
-	elif (Phase == Phases.Hunt):
-		if (GhostType == Ghost.Clyde):
-			Goal = %NavPoints/PacManLocationTracker
+	#if (Phase == Phases.Scatter):
+		#if (GhostType == Ghost.Clyde):
+			#Goal = get_node("/root/Level/AI/NavPoints/Clyde/" + str(randi_range(1,10)))
+	#elif (Phase == Phases.Hunt):
+		#if (GhostType == Ghost.Clyde):
+			#Goal = %NavPoints/PacManLocationTracker
+			
+		#==============
+		#Moved to on timer timeout clyde specific
+		#==============
 	#endregion
 
 
 func _on_timer_timeout() -> void:
-	print(Goal)
 	if $NavigationAgent2D.target_position != Goal.global_position:
 		$NavigationAgent2D.target_position = Goal.global_position
 	$Timer.start()
@@ -111,3 +114,11 @@ func _on_check_timer_timeout() -> void:
 		Phase = Phases.Scatter
 	elif (GhostType == Ghost.Clyde):
 		Phase = Phases.Hunt
+	
+	
+	if (Phase == Phases.Scatter):
+		if (GhostType == Ghost.Clyde):
+			Goal = get_node("/root/Level/AI/NavPoints/Clyde/" + str(randi_range(1,10)))
+	elif (Phase == Phases.Hunt):
+		if (GhostType == Ghost.Clyde):
+			Goal = %NavPoints/PacManLocationTracker
