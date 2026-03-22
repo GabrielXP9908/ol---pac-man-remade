@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://cflqxx30bidwc"]
 
-[ext_resource type="Script" uid="uid://d0qhnp8q2aeam" path="res://scripts/ghost_test.gd" id="1_n7aah"]
+[ext_resource type="Script" uid="uid://d0qhnp8q2aeam" path="res://scripts/ghost_Manager.gd" id="1_n7aah"]
 [ext_resource type="Texture2D" uid="uid://cyjmjv28qveki" path="res://assets/Ghosts/Blinky/Blinky (Down).png" id="2_5mfnq"]
 [ext_resource type="Texture2D" uid="uid://ch3tenpcj3gbu" path="res://assets/Ghosts/Blinky/Blinky (Left).png" id="3_lv6vd"]
 [ext_resource type="Texture2D" uid="uid://dq0ir46fcjfdu" path="res://assets/Ghosts/Blinky/Blinky (RIght).png" id="4_sv5gc"]
 [ext_resource type="Texture2D" uid="uid://cttibrm2rfqxa" path="res://assets/Ghosts/Blinky/Blinky (Up).png" id="5_wj1r3"]
+[ext_resource type="Texture2D" uid="uid://dm51yyye7wvs" path="res://assets/Ghosts/Clyde/Clyde (Up).png" id="6_seks5"]
+[ext_resource type="Texture2D" uid="uid://rdtvvjpyknyn" path="res://assets/Ghosts/Clyde/Clyde (Right).png" id="7_4pqta"]
+[ext_resource type="Texture2D" uid="uid://dspbwy36ppmtq" path="res://assets/Ghosts/Clyde/Clyde (Down).png" id="8_ok4sd"]
+[ext_resource type="Texture2D" uid="uid://bati55vwn2h6k" path="res://assets/Ghosts/Clyde/Clyde (Left).png" id="9_o57ao"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uehw0"]
 atlas = ExtResource("5_wj1r3")
@@ -36,6 +40,38 @@ region = Rect2(0, 0, 14, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o57ao"]
 atlas = ExtResource("3_lv6vd")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0uf5"]
+atlas = ExtResource("6_seks5")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj4ww"]
+atlas = ExtResource("6_seks5")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8b1n"]
+atlas = ExtResource("7_4pqta")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ittg"]
+atlas = ExtResource("7_4pqta")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jpmw"]
+atlas = ExtResource("8_ok4sd")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3330"]
+atlas = ExtResource("8_ok4sd")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wev76"]
+atlas = ExtResource("9_o57ao")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68ei1"]
+atlas = ExtResource("9_o57ao")
 region = Rect2(14, 0, 14, 14)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t76o2"]
@@ -83,23 +119,67 @@ animations = [{
 "loop": true,
 "name": &"0_4",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0uf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bj4ww")
+}],
+"loop": true,
+"name": &"3_1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8b1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ittg")
+}],
+"loop": true,
+"name": &"3_2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jpmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3330")
+}],
+"loop": true,
+"name": &"3_3",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wev76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68ei1")
+}],
+"loop": true,
+"name": &"3_4",
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7aah"]
-radius = 3.0
+radius = 4.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1325077530]
+[sub_resource type="CircleShape2D" id="CircleShape2D_seks5"]
+radius = 55.00909
+
+[node name="Ghost" type="CharacterBody2D" unique_id=1325077530]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_n7aah")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1098293925]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_t76o2")
-animation = &"0_1"
-frame_progress = 0.79636383
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=75973465]
-shape = SubResource("CircleShape2D_n7aah")
+animation = &"3_4"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1765026737]
 path_desired_distance = 2.0
@@ -112,7 +192,30 @@ debug_path_custom_color = Color(0.8495599, 3.2969565e-06, 1.540184e-06, 1)
 debug_path_custom_line_width = 2.0
 
 [node name="Timer" type="Timer" parent="." unique_id=439034811]
+wait_time = 0.1
 one_shot = true
 autostart = true
 
+[node name="KillCollidorArea" type="Area2D" parent="." unique_id=124548875]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillCollidorArea" unique_id=75973465]
+shape = SubResource("CircleShape2D_n7aah")
+
+[node name="ClydeSpec" type="Area2D" parent="." unique_id=1779792249]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClydeSpec" unique_id=1416765361]
+shape = SubResource("CircleShape2D_seks5")
+debug_color = Color(0.9298649, 0.26577806, 0, 0.41960785)
+
+[node name="CheckTimer" type="Timer" parent="ClydeSpec" unique_id=391440029]
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_shape_entered" from="KillCollidorArea" to="." method="_on_kill_collidor_area_area_shape_entered"]
+[connection signal="area_entered" from="ClydeSpec" to="." method="_on_clyde_spec_area_entered"]
+[connection signal="area_exited" from="ClydeSpec" to="." method="_on_clyde_spec_area_exited"]
+[connection signal="timeout" from="ClydeSpec/CheckTimer" to="." method="_on_check_timer_timeout"]

@@ -27,13 +27,18 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	
-	print("=== DEBUG ===")
-	print("Allow Movement: ", allow_movement)
-	print("Colliding Up:   ", colliding_up)
-	print("Colliding Right:", colliding_right)
-	print("Colliding Down: ", colliding_down)
-	print("Colliding Left: ", colliding_left)
-	print("=============")
+	GameManager.positionupdate(position.x, position.y)
+	
+#region Debug
+	#print("=== DEBUG ===")
+	#print("Allow Movement: ", allow_movement)
+	#print("Colliding Up:   ", colliding_up)
+	#print("Colliding Right:", colliding_right)
+	#print("Colliding Down: ", colliding_down)
+	#print("Colliding Left: ", colliding_left)
+	#print("=============")
+#endregion
+
 	#if (Input.is_action_just_pressed("down") or Input.is_action_just_pressed("left") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("right")):
 		#print("test")
 	if allow_movement:
@@ -89,8 +94,8 @@ func _process(_delta: float) -> void:
 #endregion
 
 
-func isPacMan():
-	print("Yes, me PacMan!")
+func isPacMan() -> bool:
+	return true
 
 
 func teleporter(entered_map_side: String):
@@ -172,10 +177,16 @@ func _on_collision_left_body_exited(_body: Node2D) -> void:
 #region Live System
 func die():
 	GameManager.lives -= 1
+	allow_movement = false
 	direction = 0
 	store_one_input = 0
 	$PacManSprite.play("death")
-	#ghosts need to listen to die() to despawn
+	await get_tree().create_timer(1.3).timeout
 	if (GameManager.lives <= 0):
 		GameManager.GameOver()
+	else:
+		position.x = 289
+		position.y = 226
+		allow_movement = true
+		$PacManSprite.play("up")
 #endregion

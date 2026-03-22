@@ -7,13 +7,13 @@ var lives := 4
 var levels := 0
 var levels_capped := 0
 
-var gamestate = 0 # 0 = TitleScreen, 1 = Game, 2 = Ingame, 3 = End Screen
-
 var coins := 0
+
+var pacman_x: float
+var pacman_y: float
 
 #signal scoreUpdated(new_score: int)
 #signal highScoreUpdated(new_highscore: int)
-signal gamestateUpdated(new_gamestate_id: int)
 signal killPacMan()
 signal gameOver(score: int, level: int)
 
@@ -55,10 +55,6 @@ func updateHighScore():
 func resetHighScore():
 	highscore = 0
 
-func updateGameState(new_gamestate_id: int):
-	gamestateUpdated.emit(new_gamestate_id)
-	gamestate = new_gamestate_id
-
 func updateExtraLive():
 	if (score>=10000 and !recived_extra_live):
 		recived_extra_live = true
@@ -77,3 +73,10 @@ func levelcompletecheck():
 
 func nextLevel():
 	GameStateManager.new_gamestate(2)
+
+func positionupdate(func_x: float, func_y: float):
+	pacman_x = func_x
+	pacman_y = func_y
+
+func getpacmanposition() -> Vector2:
+	return Vector2(pacman_x, pacman_y)
