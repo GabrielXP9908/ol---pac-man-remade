@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://ccvclwescppk6" path="res://assets/sprites/levels/18.png" id="29_50fbu"]
 [ext_resource type="Texture2D" uid="uid://doytqlavjq7do" path="res://assets/sprites/levels/19.png" id="30_0fmhk"]
 [ext_resource type="PackedScene" uid="uid://be81101u1g4lu" path="res://scenes/point.tscn" id="32_2e2fo"]
-[ext_resource type="PackedScene" uid="uid://cflqxx30bidwc" path="res://scenes/ghost_test.tscn" id="34_v3why"]
+[ext_resource type="PackedScene" uid="uid://cflqxx30bidwc" path="res://scenes/ghost.tscn" id="34_v3why"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v3why"]
 
@@ -1353,7 +1353,7 @@ offset_right = 576.0
 offset_bottom = 324.0
 color = Color(0, 0, 0, 1)
 
-[node name="Ghost_Test" parent="." unique_id=423937426 node_paths=PackedStringArray("Goal") instance=ExtResource("34_v3why")]
+[node name="Ghost" parent="." unique_id=423937426 node_paths=PackedStringArray("Goal") instance=ExtResource("34_v3why")]
 position = Vector2(276, 202)
 Goal = NodePath("../PacMan")
 

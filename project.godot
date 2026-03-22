@@ -33,6 +33,10 @@ window/size/maximize_disabled=true
 folder_colors={
 "res://OL - Bilder & Vids/": "red",
 "res://assets/": "purple",
+"res://assets/Ghosts/Blinky/": "red",
+"res://assets/Ghosts/Clyde/": "orange",
+"res://assets/Ghosts/Inky/": "blue",
+"res://assets/Ghosts/Pinky/": "pink",
 "res://assets/sprites/levels/": "pink",
 "res://assets/sprites/lives/": "pink",
 "res://assets/sprites/points/": "pink",
