@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rdtvvjpyknyn"
-path="res://.godot/imported/Clyde (Right).png-cccdc1fbf1f05a5b426d9cd7f631ef11.ctex"
+uid="uid://cyjmjv28qveki"
+path="res://.godot/imported/Blinky (Down).png-cc4c0396f088ae2cb8a12e8e194c88e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ghosts/Clyde/Clyde (Right).png"
-dest_files=["res://.godot/imported/Clyde (Right).png-cccdc1fbf1f05a5b426d9cd7f631ef11.ctex"]
+source_file="res://assets/sprites/Ghosts/Blinky/Blinky (Down).png"
+dest_files=["res://.godot/imported/Blinky (Down).png-cc4c0396f088ae2cb8a12e8e194c88e5.ctex"]
 
 [params]
 

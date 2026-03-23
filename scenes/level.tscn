@@ -34,8 +34,10 @@
 [ext_resource type="Texture2D" uid="uid://doytqlavjq7do" path="res://assets/sprites/levels/19.png" id="30_0fmhk"]
 [ext_resource type="PackedScene" uid="uid://be81101u1g4lu" path="res://scenes/point.tscn" id="32_2e2fo"]
 [ext_resource type="PackedScene" uid="uid://cflqxx30bidwc" path="res://scenes/ghost.tscn" id="34_v3why"]
+[ext_resource type="Texture2D" uid="uid://cb2c1s6h6gek6" path="res://assets/Arcade - Pac-Man - Miscellaneous - Maze Parts.png" id="35_q4oe8"]
 [ext_resource type="Script" uid="uid://ddao3ijnimn8g" path="res://scenes/pac_man_location_tracker.gd" id="36_2jdvr"]
 [ext_resource type="Script" uid="uid://dugco2ffkybq2" path="res://scripts/fpscounter_dev.gd" id="36_q4oe8"]
+[ext_resource type="Script" uid="uid://b06t4uxdpnibf" path="res://scripts/four_tiles.gd" id="37_svjb4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v3why"]
 
@@ -1354,17 +1356,34 @@ color = Color(0, 0, 0, 1)
 [node name="AI" type="Node2D" parent="." unique_id=518073429]
 
 [node name="Blinky" parent="AI" unique_id=423937426 node_paths=PackedStringArray("Goal") instance=ExtResource("34_v3why")]
-position = Vector2(288, 153)
+position = Vector2(288, 147)
 Goal = NodePath("../../PacMan")
 house_x = 288.0
 house_y = 153.0
 
 [node name="Clyde" parent="AI" unique_id=1325077530 node_paths=PackedStringArray("Goal") instance=ExtResource("34_v3why")]
-position = Vector2(273, 153)
+position = Vector2(272, 159)
 Goal = NodePath("../../PacMan")
 GhostType = 3
 house_x = 273.0
 house_y = 153.0
+
+[node name="CollisionShape2D2" parent="AI/Clyde/Inner Circle" parent_id_path=PackedInt32Array(1325077530, 619959568) index="0" unique_id=1054735]
+visible = true
+
+[node name="CollisionShape2D" parent="AI/Clyde/OuterCircle" parent_id_path=PackedInt32Array(1325077530, 1966835391) index="0" unique_id=186935706]
+visible = true
+
+[node name="Pinky" parent="AI" unique_id=276072950 node_paths=PackedStringArray("Goal") instance=ExtResource("34_v3why")]
+position = Vector2(288, 159)
+Goal = NodePath("../NavPoints/four-tiles")
+GhostType = 1
+house_x = 288.0
+house_y = 159.0
+
+[node name="ArcadePacManMiscellaneousMazeParts" type="Sprite2D" parent="AI" unique_id=967323962]
+position = Vector2(360, 453)
+texture = ExtResource("35_q4oe8")
 
 [node name="NavPoints" type="Node2D" parent="AI" unique_id=38737128]
 unique_name_in_owner = true
@@ -1405,6 +1424,9 @@ position = Vector2(188, 250)
 position = Vector2(92, 147)
 script = ExtResource("36_2jdvr")
 
+[node name="four-tiles" type="Node2D" parent="AI/NavPoints" unique_id=1511571102]
+script = ExtResource("37_svjb4")
+
 [node name="DEV_FPS_counter" type="Label" parent="." unique_id=1459789075]
 offset_left = 52.0
 offset_top = 59.0
@@ -1414,3 +1436,5 @@ script = ExtResource("36_q4oe8")
 
 [connection signal="area_entered" from="TileMapLayer/TeleporterLeft" to="TileMapLayer" method="_on_teleporter_left_area_entered"]
 [connection signal="area_entered" from="TileMapLayer/TeleporterRight" to="TileMapLayer" method="_on_teleporter_right_area_entered"]
+
+[editable path="AI/Clyde"]

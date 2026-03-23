@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dspbwy36ppmtq"
-path="res://.godot/imported/Clyde (Down).png-65aa358f83291d1d9122c8ad153d5d50.ctex"
+uid="uid://dm51yyye7wvs"
+path="res://.godot/imported/Clyde (Up).png-2c476033724b41d31f59be6009235792.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ghosts/Clyde/Clyde (Down).png"
-dest_files=["res://.godot/imported/Clyde (Down).png-65aa358f83291d1d9122c8ad153d5d50.ctex"]
+source_file="res://assets/sprites/Ghosts/Clyde/Clyde (Up).png"
+dest_files=["res://.godot/imported/Clyde (Up).png-2c476033724b41d31f59be6009235792.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch3tenpcj3gbu"
-path="res://.godot/imported/Blinky (Left).png-ca504066f9d0a3d22b5eebec914d9f70.ctex"
+uid="uid://d2gb3k21l5iqo"
+path="res://.godot/imported/Inky (Left).png-d37560b20c726516c7711cd612d463e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ghosts/Blinky/Blinky (Left).png"
-dest_files=["res://.godot/imported/Blinky (Left).png-ca504066f9d0a3d22b5eebec914d9f70.ctex"]
+source_file="res://assets/sprites/Ghosts/Inky/Inky (Left).png"
+dest_files=["res://.godot/imported/Inky (Left).png-d37560b20c726516c7711cd612d463e9.ctex"]
 
 [params]
 

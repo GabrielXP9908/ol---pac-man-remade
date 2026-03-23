@@ -27,6 +27,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	
 	GameManager.positionupdate(position.x, position.y)
+	GameManager.directionupdate(direction)
 	
 #region Debug
 	#print("=== DEBUG ===")

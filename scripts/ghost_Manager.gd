@@ -44,21 +44,25 @@ func _ready() -> void:
 		$NavigationAgent2D.debug_enabled = true
 	else:
 		$NavigationAgent2D.debug_enabled = false
+	
+	if (GhostType == Ghost.Clyde):
+		$NavigationAgent2D.debug_path_custom_color = Color(255.0/255, 100.0/255, 0.0/255)  # Orange
+	elif (GhostType == Ghost.Blinky):
+		pass
+	elif (GhostType == Ghost.Pinky):
+		$NavigationAgent2D.debug_path_custom_color = Color(1.0, 0.631, 0.675, 1.0)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	if !$NavigationAgent2D.is_target_reached():
 		var nav_point_direction = to_local($NavigationAgent2D.get_next_path_position()).normalized()
 		velocity = nav_point_direction * speed * delta
 		move_and_slide()
 	
 	$AnimatedSprite2D.play(str(GhostType)+"_"+str(get_nav_direction()))
-	
-	if (GhostType == Ghost.Clyde):
-		$NavigationAgent2D.debug_path_custom_color = Color(255.0/255, 100.0/255, 0.0/255)  # Orange
-	elif (GhostType == Ghost.Blinky):
-		pass
 	
 	
 	#region Phases
@@ -100,21 +104,13 @@ func on_pacman_death():
 	position.y = house_y
 
 
-func _on_clyde_spec_area_entered(area: Area2D) -> void:
-	if (area.has_method("isPacMan") and GhostType == Ghost.Clyde):
-		PacMan_in_Range = true
-
-func _on_clyde_spec_area_exited(area: Area2D) -> void:
-	if (area.has_method("isPacMan") and GhostType == Ghost.Clyde):
-		PacMan_in_Range = false
-	
 func _on_check_timer_timeout() -> void:
-	$ClydeSpec/CheckTimer.start()
-	if (PacMan_in_Range and GhostType == Ghost.Clyde):
-		Phase = Phases.Scatter
-	elif (GhostType == Ghost.Clyde):
-		Phase = Phases.Hunt
+	$CheckTimer.start()
 	
+	if PacMan_in_Range:
+		Phase = Phases.Scatter
+	else:
+		Phase = Phases.Hunt
 	
 	if (Phase == Phases.Scatter):
 		if (GhostType == Ghost.Clyde):
@@ -122,3 +118,13 @@ func _on_check_timer_timeout() -> void:
 	elif (Phase == Phases.Hunt):
 		if (GhostType == Ghost.Clyde):
 			Goal = %NavPoints/PacManLocationTracker
+
+
+func _on_inner_circle_area_entered(area: Area2D) -> void:
+	if area.has_method("isPacMan") and GhostType == Ghost.Clyde:
+		PacMan_in_Range = true
+
+
+func _on_outer_circle_area_exited(area: Area2D) -> void:
+	if area.has_method("isPacMan") and GhostType == Ghost.Clyde:
+		PacMan_in_Range = false

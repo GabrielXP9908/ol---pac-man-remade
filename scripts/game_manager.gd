@@ -11,6 +11,7 @@ var coins := 0
 
 var pacman_x: float
 var pacman_y: float
+var pacman_direction: int
 
 #signal scoreUpdated(new_score: int)
 #signal highScoreUpdated(new_highscore: int)
@@ -86,3 +87,9 @@ func positionupdate(func_x: float, func_y: float):
 
 func getpacmanposition() -> Vector2:
 	return Vector2(pacman_x, pacman_y)
+
+func directionupdate(direction: int):
+	pacman_direction = direction #+ 1
+
+func getpacmandirection() -> int:
+	return pacman_direction
