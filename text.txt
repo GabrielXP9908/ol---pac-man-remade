@@ -20,6 +20,9 @@ Collision Layers:
 	✅ 
 	✅ 
 	
+	ZWEI TASTEN GLEICHZEITIG = STUCK????
+	
+	
 	Dran:
 		tile map nav layer machen
 		1ste done = immer laufen auch aus käfig
