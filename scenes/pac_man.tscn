@@ -305,7 +305,7 @@ position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_dj63t")
 
 [node name="Timer" type="Timer" parent="." unique_id=1115929094]
-wait_time = 0.025
+wait_time = 0.018000000000000002
 
 [node name="CoinCollector" type="Area2D" parent="." unique_id=636009588]
 script = ExtResource("7_sp5p5")

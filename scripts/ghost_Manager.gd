@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 1800
+const speed = 1700
 const debug = true
 
 @export var Goal: Node = null
