@@ -25,7 +25,9 @@ Collision Layers:
 		1ste done = immer laufen auch aus käfig
 		2te in arbeit = nur außerhalb von käfig
 
-FEHLER BEHEBEN DAS SIE NICHT GEHEN!!!! LEICHT GTÖẞER MACHEN ALS TILES EIG SIND SONST GEHT ES NICHT!!!!
+TILE MAP LAYERS REWORKEN!!!
+TELEPORTER FÜR GEISTER FUNKTIONIEREN MACHEN!!!!
+INKY NO MOVEMENT ON SECOND TRY FIXEN!!!!!
 		
 	
 	

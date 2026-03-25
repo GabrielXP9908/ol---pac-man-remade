@@ -12,6 +12,7 @@ var coins := 0
 var pacman_x: float
 var pacman_y: float
 var pacman_direction: int
+var Blinky_pos: Vector2
 
 #signal scoreUpdated(new_score: int)
 #signal highScoreUpdated(new_highscore: int)
@@ -93,3 +94,9 @@ func directionupdate(direction: int):
 
 func getpacmandirection() -> int:
 	return pacman_direction
+
+func updateBlinkypos(blinky_position: Vector2):
+	Blinky_pos = blinky_position
+
+func getblinkyposition() -> Vector2:
+	return Blinky_pos
