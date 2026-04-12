@@ -12,7 +12,7 @@ Collision Layers:
 	✅ Animations for PacMan
 	✅ Below Map Icons added
 	✅ Level und points mechanik
-	✅ 
+	✅ Geister implementieren
 	✅ 
 	✅ 
 	✅ 
@@ -34,14 +34,13 @@ INKY NO MOVEMENT ON SECOND TRY FIXEN!!!!!
 		
 	
 	
-	❎ Geister implementieren
+	❎ Geister States implementieren
 	❎ Movement Speed koreewkt (ChatGPT & research)
 	❎ Speed im Tunnel
-	❎ 
-	❎ 
-	❎ 
-	❎ 
-	❎ 
+	❎ INTRO SCENE ADDEN
+	❎ Title Screen buttons adden
+	❎ Leaderbord scene adden
+	❎ Logout adden
 	❎ 
 	❎ 
 	❎ 

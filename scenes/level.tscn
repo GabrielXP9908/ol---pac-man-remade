@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://c3ljfn4h6uq8w"]
 
 [ext_resource type="Texture2D" uid="uid://csf2hs36j38l4" path="res://assets/sprites/pacman_map.png" id="1_2q6dc"]
-[ext_resource type="FontFile" uid="uid://rs023qm5m8ga" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_w7c3h"]
 [ext_resource type="Script" uid="uid://b88650txgdfxe" path="res://scripts/score_texts.gd" id="2_w8frs"]
+[ext_resource type="FontFile" uid="uid://cu65lxkp8w5a1" path="res://assets/fonts/PacMan Font.ttf" id="3_c1pbi"]
 [ext_resource type="Texture2D" uid="uid://cw3vo7pnehef5" path="res://assets/sprites/map_colors.png" id="4_mx8sn"]
 [ext_resource type="Script" uid="uid://cwos8eoypypbf" path="res://scripts/map_and_teleporters.gd" id="5_2r41h"]
 [ext_resource type="PackedScene" uid="uid://cvlqirrfxsm0w" path="res://scenes/pac_man.tscn" id="5_ppgk2"]
@@ -588,8 +588,10 @@ animations = [{
 [node name="Level" type="Node2D" unique_id=373382970]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1619703937]
-offset_right = 576.0
-offset_bottom = 324.0
+offset_left = 176.0
+offset_top = 18.0
+offset_right = 400.0
+offset_bottom = 306.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
@@ -597,30 +599,26 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(288, 162)
 texture = ExtResource("1_2q6dc")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=878388624]
-position = Vector2(288, 162)
-zoom = Vector2(2.1, 2.1)
-
 [node name="Texts" type="Node2D" parent="." unique_id=1067019234]
 script = ExtResource("2_w8frs")
 
 [node name="HighscoreTXT" type="Label" parent="Texts" unique_id=1287870626]
 offset_left = 218.0
-offset_top = 10.0
+offset_top = 18.0
 offset_right = 358.0
-offset_bottom = 33.0
-theme_override_fonts/font = ExtResource("2_w7c3h")
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("3_c1pbi")
 theme_override_font_sizes/font_size = 8
-text = "HIGH SCORE"
+text = "HIGH    SCORE"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="highscore" type="Label" parent="Texts" unique_id=1822561096]
 offset_left = 218.0
-offset_top = 19.0
+offset_top = 27.0
 offset_right = 358.0
-offset_bottom = 42.0
-theme_override_fonts/font = ExtResource("2_w7c3h")
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("3_c1pbi")
 theme_override_font_sizes/font_size = 8
 text = "13110"
 horizontal_alignment = 1
@@ -631,9 +629,9 @@ offset_left = 145.0
 offset_top = 18.0
 offset_right = 285.0
 offset_bottom = 41.0
-theme_override_fonts/font = ExtResource("2_w7c3h")
+theme_override_fonts/font = ExtResource("3_c1pbi")
 theme_override_font_sizes/font_size = 8
-text = "1UP"
+text = "1 UP"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -642,7 +640,7 @@ offset_left = 145.0
 offset_top = 27.0
 offset_right = 285.0
 offset_bottom = 50.0
-theme_override_fonts/font = ExtResource("2_w7c3h")
+theme_override_fonts/font = ExtResource("3_c1pbi")
 theme_override_font_sizes/font_size = 8
 text = "13110"
 horizontal_alignment = 1
@@ -1436,17 +1434,6 @@ scale = Vector2(0.94, 0.94)
 sprite_frames = SubResource("SpriteFrames_556r4")
 animation = &"9"
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=200254538]
-offset_right = 176.0
-offset_bottom = 324.0
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="." unique_id=491769225]
-offset_left = 400.0
-offset_right = 576.0
-offset_bottom = 324.0
-color = Color(0, 0, 0, 1)
-
 [node name="AI" type="Node2D" parent="." unique_id=518073429]
 
 [node name="Blinky" parent="AI" unique_id=423937426 node_paths=PackedStringArray("Goal") instance=ExtResource("34_v3why")]
@@ -1537,6 +1524,10 @@ offset_top = 59.0
 offset_right = 92.0
 offset_bottom = 82.0
 script = ExtResource("36_q4oe8")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=878388624]
+position = Vector2(288, 162)
+zoom = Vector2(3, 3)
 
 [connection signal="area_entered" from="TileMapLayer/TeleporterLeft" to="TileMapLayer" method="_on_teleporter_left_area_entered"]
 [connection signal="body_entered" from="TileMapLayer/TeleporterLeft" to="TileMapLayer" method="_on_teleporter_left_body_entered"]

@@ -1,30 +1,27 @@
 [gd_scene format=3 uid="uid://c0wel1r1o1fqb"]
 
-[ext_resource type="Texture2D" uid="uid://i5vhuhjq6cbo" path="res://assets/sprites/pacman.png" id="1_jl46c"]
+[ext_resource type="Texture2D" uid="uid://blj118uhder33" path="res://assets/sprites/PacMan/pacman_right.png" id="1_8yh7s"]
 [ext_resource type="FontFile" uid="uid://rs023qm5m8ga" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_8yh7s"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8yh7s"]
-atlas = ExtResource("1_jl46c")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvorp"]
-atlas = ExtResource("1_jl46c")
-region = Rect2(32, 0, 32, 32)
+atlas = ExtResource("1_8yh7s")
+region = Rect2(0, 0, 13, 13)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0thqq"]
-atlas = ExtResource("1_jl46c")
-region = Rect2(64, 0, 32, 32)
+atlas = ExtResource("1_8yh7s")
+region = Rect2(13, 0, 13, 13)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uc6oe"]
-atlas = ExtResource("1_jl46c")
-region = Rect2(96, 0, 32, 32)
+atlas = ExtResource("1_8yh7s")
+region = Rect2(26, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epygs"]
+atlas = ExtResource("1_8yh7s")
+region = Rect2(39, 0, 13, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kjvmx"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8yh7s")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fvorp")
 }, {
@@ -33,6 +30,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uc6oe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epygs")
 }],
 "loop": true,
 "name": &"default",

@@ -24,6 +24,8 @@ GameStateManager="*uid://bb74b2ie3o3l7"
 
 [display]
 
+window/size/viewport_width=672
+window/size/viewport_height=864
 window/size/resizable=false
 window/size/minimize_disabled=true
 window/size/maximize_disabled=true

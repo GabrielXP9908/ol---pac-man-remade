@@ -92,7 +92,7 @@ func _on_login_pressed() -> void:
 func _on_player_ready(tag: String, hs: int) -> void:
 	print("[LeaderboardScene] Spieler bereit: %s | HS: %d – starte Spiel" % [tag, hs])
 	GameManager.highscore = Leaderboard.highscore
-	GameStateManager.updategamestate(2)
+	GameStateManager.updategamestate(0)
 
 func _on_register_failed(reason: String) -> void:
 	push_error("[LeaderboardScene] Registrierung fehlgeschlagen: " + reason)

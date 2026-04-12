@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bo062s6wjbeac" path="res://assets/sprites/button/disabled.png" id="4_u26n3"]
 [ext_resource type="Texture2D" uid="uid://bfsxjgjukhqjx" path="res://assets/sprites/button/focused.png" id="5_ib7db"]
 [ext_resource type="Script" uid="uid://dc50f3bmspml0" path="res://scripts/start_game.gd" id="6_mykxm"]
+[ext_resource type="FontFile" uid="uid://cu65lxkp8w5a1" path="res://assets/fonts/PacMan Font.ttf" id="7_tklts"]
 
 [node name="TitleScreen" type="Node2D" unique_id=1129280298]
 
@@ -35,9 +36,9 @@ offset_left = 330.0
 offset_top = 195.0
 offset_right = 840.0
 offset_bottom = 235.0
-theme_override_fonts/font = ExtResource("1_fgkus")
+theme_override_fonts/font = ExtResource("7_tklts")
 theme_override_font_sizes/font_size = 40
-text = "PacMan Remade"
+text = "PACMAN REMADE"
 
 [node name="Label2" type="Label" parent="." unique_id=416548836]
 offset_left = 368.0
@@ -52,12 +53,17 @@ text = "PacMan Remade"
 [node name="PacMan (unplayable)" parent="." unique_id=1481966996 instance=ExtResource("2_sa3yf")]
 position = Vector2(-64, 584)
 scale = Vector2(4, 4)
-autoplay = "default"
+autoplay = "new_animation"
+frame_progress = 0.0
 script = ExtResource("3_s4lrb")
 
 [node name="Timer" type="Timer" parent="PacMan (unplayable)" unique_id=1235472530]
 wait_time = 0.05
 autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1724155266]
+position = Vector2(578, 320)
+zoom = Vector2(1.355, 1.355)
 
 [connection signal="button_down" from="TextureButton" to="TextureButton" method="_on_button_down"]
 [connection signal="timeout" from="PacMan (unplayable)/Timer" to="PacMan (unplayable)" method="_on_timer_timeout"]

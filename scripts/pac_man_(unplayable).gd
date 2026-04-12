@@ -13,7 +13,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("secret"):
 		secret_presses += 1
 	
-	if (Input.is_action_pressed("secret") and secret_presses>5):
+	if (Input.is_action_pressed("secret") and secret_presses>5 and OS.has_feature("pc")):
 		position.y = get_global_mouse_position()[1]
 	
 	if (secret_presses==5):
