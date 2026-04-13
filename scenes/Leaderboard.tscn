@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c0kx3vwjnloje" path="res://assets/sprites/button/normal.png" id="2_xa581"]
 [ext_resource type="Texture2D" uid="uid://debeud0y27c0i" path="res://assets/sprites/button/pressed.png" id="3_hr3dl"]
 [ext_resource type="Texture2D" uid="uid://6mjlqpcx583" path="res://assets/sprites/button/hovered.png" id="4_jftfo"]
+[ext_resource type="FontFile" uid="uid://cu65lxkp8w5a1" path="res://assets/fonts/PacMan Font.ttf" id="5_hr3dl"]
 
 [node name="Control" type="Control" unique_id=2097240]
 layout_mode = 3
@@ -11,6 +12,7 @@ anchors_preset = 0
 script = ExtResource("1_n6nvk")
 
 [node name="RegisterPanel" type="Panel" parent="." unique_id=1540840061]
+visible = false
 layout_mode = 0
 offset_left = 63.0
 offset_top = 48.0
@@ -56,6 +58,7 @@ texture_hover = ExtResource("4_jftfo")
 stretch_mode = 0
 
 [node name="LoginPanel" type="Panel" parent="." unique_id=954065162]
+visible = false
 layout_mode = 0
 offset_left = 80.0
 offset_top = 377.0
@@ -99,3 +102,95 @@ texture_normal = ExtResource("2_xa581")
 texture_pressed = ExtResource("3_hr3dl")
 texture_hover = ExtResource("4_jftfo")
 stretch_mode = 0
+
+[node name="LeaderboardPanel" type="Panel" parent="." unique_id=849550992]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 27.0
+offset_right = 635.0
+offset_bottom = 839.0
+
+[node name="TitleLabel" type="Label" parent="LeaderboardPanel" unique_id=1345218096]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 13.0
+offset_right = 473.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("5_hr3dl")
+theme_override_font_sizes/font_size = 32
+text = "LEADERBOARD"
+
+[node name="HeaderRow" type="HBoxContainer" parent="LeaderboardPanel" unique_id=1833632227]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 52.0
+offset_right = 590.0
+offset_bottom = 88.0
+
+[node name="NrCol" type="Label" parent="LeaderboardPanel/HeaderRow" unique_id=1368154057]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "NR."
+
+[node name="NameCol" type="Label" parent="LeaderboardPanel/HeaderRow" unique_id=106935559]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "NAME"
+
+[node name="LevelCol" type="Label" parent="LeaderboardPanel/HeaderRow" unique_id=1309367076]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "LEVEL"
+
+[node name="ScoreCol" type="Label" parent="LeaderboardPanel/HeaderRow" unique_id=2135383799]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "SCORE"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LeaderboardPanel" unique_id=990967533]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 84.0
+offset_right = 569.0
+offset_bottom = 736.0
+
+[node name="EntriesBox" type="VBoxContainer" parent="LeaderboardPanel/ScrollContainer" unique_id=598352021]
+layout_mode = 2
+
+[node name="Separator" type="HSeparator" parent="LeaderboardPanel" unique_id=1417366945]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 736.0
+offset_right = 571.0
+offset_bottom = 744.0
+
+[node name="PlayerRow" type="HBoxContainer" parent="LeaderboardPanel" unique_id=178877598]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 744.0
+offset_right = 572.0
+offset_bottom = 791.0
+
+[node name="PlayerNr" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=88007268]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=1626495787]
+layout_mode = 2
+
+[node name="PlayerLevel" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=747630587]
+layout_mode = 2
+
+[node name="PlayerScore" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=616182829]
+layout_mode = 2
+
+[node name="PlayBtn" type="Button" parent="LeaderboardPanel" unique_id=706812842]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 79.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "PLAY"
+
+[node name="RefreshTimer" type="Timer" parent="LeaderboardPanel" unique_id=933805222]
+wait_time = 10.0

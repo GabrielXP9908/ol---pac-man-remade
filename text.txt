@@ -41,8 +41,8 @@ INKY NO MOVEMENT ON SECOND TRY FIXEN!!!!!
 	❎ Title Screen buttons adden
 	❎ Leaderbord scene adden
 	❎ Logout adden
-	❎ 
-	❎ 
+	❎ - Leaderboard Layout Fixen
+	❎ - Leaderboard buttons zu BACK und LOGOUT Ändern!
 	❎ 
 	
 	
