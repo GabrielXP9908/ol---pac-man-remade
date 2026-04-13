@@ -20,7 +20,7 @@ Collision Layers:
 	✅ 
 	✅ 
 	
-	ZWEI TASTEN GLEICHZEITIG = STUCK????
+	✅Konnte Bug nicht replizieren I ZWEI TASTEN GLEICHZEITIG = STUCK????
 	
 	
 	Dran:

@@ -12,10 +12,10 @@ script = ExtResource("1_n6nvk")
 
 [node name="RegisterPanel" type="Panel" parent="." unique_id=1540840061]
 layout_mode = 0
-offset_left = 257.0
-offset_top = 186.0
-offset_right = 841.0
-offset_bottom = 504.0
+offset_left = 63.0
+offset_top = 48.0
+offset_right = 614.0
+offset_bottom = 367.0
 
 [node name="NameInput" type="LineEdit" parent="RegisterPanel" unique_id=308280621]
 layout_mode = 0
@@ -57,10 +57,10 @@ stretch_mode = 0
 
 [node name="LoginPanel" type="Panel" parent="." unique_id=954065162]
 layout_mode = 0
-offset_left = 315.0
-offset_top = 197.0
-offset_right = 854.0
-offset_bottom = 478.0
+offset_left = 80.0
+offset_top = 377.0
+offset_right = 619.0
+offset_bottom = 658.0
 
 [node name="NameInput" type="LineEdit" parent="LoginPanel" unique_id=1707782977]
 layout_mode = 0
