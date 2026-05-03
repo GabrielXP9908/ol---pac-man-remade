@@ -19,3 +19,4 @@ func _process(_delta: float) -> void:
 		global_position.y = tmp_position[1]
 	
 	global_position = global_position + (global_position - blinky_pos)
+	print(global_position)

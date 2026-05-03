@@ -13,8 +13,8 @@
 	✅ Below Map Icons added
 	✅ Level und points mechanik
 	✅ Geister implementieren
-	✅ 
-	✅ 
+	✅ Leaderbord scene adden
+	✅ - Leaderboard Layout Fixen
 	✅ 
 	✅ 
 	✅ 
@@ -32,9 +32,7 @@ INKY NO MOVEMENT ON SECOND TRY FIXEN!!!!!
 	❎ Speed im Tunnel
 	❎ INTRO SCENE ADDEN
 	❎ Title Screen buttons adden
-	❎ Leaderbord scene adden
 	❎ Logout adden
-	❎ - Leaderboard Layout Fixen
 	❎ - Leaderboard buttons zu BACK und LOGOUT Ändern!
 	❎ Kill dings
 	❎ kill combo

@@ -128,16 +128,19 @@ offset_right = 590.0
 offset_bottom = 88.0
 
 [node name="NrCol" type="Label" parent="LeaderboardPanel/HeaderRow" unique_id=1368154057]
+custom_minimum_size = Vector2(93.265, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_hr3dl")
 text = "NR."
 
 [node name="NameCol" type="Label" parent="LeaderboardPanel/HeaderRow" unique_id=106935559]
+custom_minimum_size = Vector2(201.435, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_hr3dl")
 text = "NAME"
 
 [node name="LevelCol" type="Label" parent="LeaderboardPanel/HeaderRow" unique_id=1309367076]
+custom_minimum_size = Vector2(89.845, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_hr3dl")
 text = "LEVEL"
@@ -172,12 +175,15 @@ offset_right = 572.0
 offset_bottom = 791.0
 
 [node name="PlayerNr" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=88007268]
+custom_minimum_size = Vector2(93.265, 0)
 layout_mode = 2
 
 [node name="PlayerName" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=1626495787]
+custom_minimum_size = Vector2(201.435, 0)
 layout_mode = 2
 
 [node name="PlayerLevel" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=747630587]
+custom_minimum_size = Vector2(89.845, 0)
 layout_mode = 2
 
 [node name="PlayerScore" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=616182829]

@@ -39,6 +39,7 @@
 [ext_resource type="Script" uid="uid://dugco2ffkybq2" path="res://scripts/fpscounter_dev.gd" id="36_q4oe8"]
 [ext_resource type="Script" uid="uid://b06t4uxdpnibf" path="res://scripts/four_tiles.gd" id="37_svjb4"]
 [ext_resource type="Script" uid="uid://cdx7xqxuqkhx7" path="res://scripts/two_tiles_inky.gd" id="38_c1pbi"]
+[ext_resource type="Texture2D" uid="uid://5tvga4b2whre" path="res://assets/sprites/PacMan/pacman_up.png" id="39_535f6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v3why"]
 
@@ -1517,6 +1518,9 @@ script = ExtResource("37_svjb4")
 
 [node name="two-tiles-inky" type="Node2D" parent="AI/NavPoints" unique_id=1696780380]
 script = ExtResource("38_c1pbi")
+
+[node name="Sprite2D" type="Sprite2D" parent="AI/NavPoints/two-tiles-inky" unique_id=1209062083]
+texture = ExtResource("39_535f6")
 
 [node name="DEV_FPS_counter" type="Label" parent="." unique_id=1459789075]
 offset_left = 52.0
