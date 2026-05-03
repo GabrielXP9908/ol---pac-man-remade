@@ -7,7 +7,7 @@ var secret_presses := 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if (position.x >= 1300):
+	if (position.x >= 696):
 		position.x = -50
 	
 	if Input.is_action_just_pressed("secret"):

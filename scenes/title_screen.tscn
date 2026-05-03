@@ -1,81 +1,81 @@
 [gd_scene format=3 uid="uid://bt61pru1t8i8q"]
 
-[ext_resource type="Texture2D" uid="uid://c0kx3vwjnloje" path="res://assets/sprites/button/normal.png" id="1_cs5ya"]
-[ext_resource type="FontFile" uid="uid://rs023qm5m8ga" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_fgkus"]
-[ext_resource type="Texture2D" uid="uid://debeud0y27c0i" path="res://assets/sprites/button/pressed.png" id="2_mykxm"]
 [ext_resource type="PackedScene" uid="uid://c0wel1r1o1fqb" path="res://scenes/pac_man_(unplayable).tscn" id="2_sa3yf"]
 [ext_resource type="Script" uid="uid://cwu8m7uk22q1" path="res://scripts/pac_man_(unplayable).gd" id="3_s4lrb"]
-[ext_resource type="Texture2D" uid="uid://6mjlqpcx583" path="res://assets/sprites/button/hovered.png" id="3_tklts"]
-[ext_resource type="Texture2D" uid="uid://bo062s6wjbeac" path="res://assets/sprites/button/disabled.png" id="4_u26n3"]
-[ext_resource type="Texture2D" uid="uid://bfsxjgjukhqjx" path="res://assets/sprites/button/focused.png" id="5_ib7db"]
+[ext_resource type="Script" uid="uid://dpvwc5gtou85s" path="res://scripts/quit_btn.gd" id="4_e54dn"]
 [ext_resource type="Script" uid="uid://dc50f3bmspml0" path="res://scripts/start_game.gd" id="6_mykxm"]
 [ext_resource type="FontFile" uid="uid://cu65lxkp8w5a1" path="res://assets/fonts/PacMan Font.ttf" id="7_tklts"]
 [ext_resource type="Script" uid="uid://0x34m0slelem" path="res://scripts/leaderboard_btn.gd" id="11_u26n3"]
 
-[node name="TitleScreen" type="Node2D" unique_id=1129280298]
+[node name="TitleScreen" type="Control" unique_id=1558573938]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1276637089]
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 0
+offset_right = 672.0
+offset_bottom = 864.0
 color = Color(0, 0, 0, 1)
 
-[node name="TextureButton" type="TextureButton" parent="." unique_id=1100292161]
-offset_left = 344.0
-offset_top = 285.0
-offset_right = 799.0
-offset_bottom = 346.0
-texture_normal = ExtResource("1_cs5ya")
-texture_pressed = ExtResource("2_mykxm")
-texture_hover = ExtResource("3_tklts")
-texture_disabled = ExtResource("4_u26n3")
-texture_focused = ExtResource("5_ib7db")
-stretch_mode = 0
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2090319978]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 146.0
+offset_right = 633.0
+offset_bottom = 378.0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1098293741]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_tklts")
+theme_override_font_sizes/font_size = 48
+text = "PACMAN REMADE"
+horizontal_alignment = 1
+
+[node name="Title2" type="Label" parent="VBoxContainer" unique_id=1985569173]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_tklts")
+theme_override_font_sizes/font_size = 48
+text = " "
+horizontal_alignment = 1
+
+[node name="PlayBtn" type="Button" parent="VBoxContainer" unique_id=1203167485]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../LeaderboardBtn")
+theme_override_fonts/font = ExtResource("7_tklts")
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
 script = ExtResource("6_mykxm")
 
-[node name="Label" type="Label" parent="." unique_id=1098293741]
-offset_left = 330.0
-offset_top = 195.0
-offset_right = 840.0
-offset_bottom = 235.0
+[node name="LeaderboardBtn" type="Button" parent="VBoxContainer" unique_id=1161414486]
+layout_mode = 2
+focus_neighbor_top = NodePath("../PlayBtn")
+focus_neighbor_bottom = NodePath("../QuitBtn")
 theme_override_fonts/font = ExtResource("7_tklts")
-theme_override_font_sizes/font_size = 40
-text = "PACMAN REMADE"
-
-[node name="Label2" type="Label" parent="." unique_id=416548836]
-offset_left = 368.0
-offset_top = 297.0
-offset_right = 776.0
-offset_bottom = 329.0
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("1_fgkus")
 theme_override_font_sizes/font_size = 32
-text = "PacMan Remade"
+text = "LEADERBOARD"
+script = ExtResource("11_u26n3")
+
+[node name="QuitBtn" type="Button" parent="VBoxContainer" unique_id=532767536]
+layout_mode = 2
+focus_neighbor_top = NodePath("../LeaderboardBtn")
+theme_override_fonts/font = ExtResource("7_tklts")
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
+script = ExtResource("4_e54dn")
 
 [node name="PacMan (unplayable)" parent="." unique_id=1481966996 instance=ExtResource("2_sa3yf")]
-position = Vector2(-64, 584)
+position = Vector2(-67, 664)
 scale = Vector2(4, 4)
-autoplay = "new_animation"
-frame_progress = 0.0
+frame_progress = 0.16226783
 script = ExtResource("3_s4lrb")
 
 [node name="Timer" type="Timer" parent="PacMan (unplayable)" unique_id=1235472530]
 wait_time = 0.05
 autostart = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1724155266]
-position = Vector2(578, 320)
-zoom = Vector2(1.355, 1.355)
-
-[node name="Button" type="Button" parent="." unique_id=1161414486]
-offset_left = 246.0
-offset_top = 49.0
-offset_right = 847.0
-offset_bottom = 175.0
-theme_override_fonts/font = ExtResource("7_tklts")
-theme_override_font_sizes/font_size = 46
-text = "LEADERBOARD test"
-script = ExtResource("11_u26n3")
-
-[connection signal="button_down" from="TextureButton" to="TextureButton" method="_on_button_down"]
+[connection signal="button_down" from="VBoxContainer/PlayBtn" to="VBoxContainer/PlayBtn" method="_on_button_down"]
+[connection signal="button_down" from="VBoxContainer/LeaderboardBtn" to="VBoxContainer/LeaderboardBtn" method="_on_button_down"]
+[connection signal="button_down" from="VBoxContainer/QuitBtn" to="VBoxContainer/QuitBtn" method="_on_button_down"]
 [connection signal="timeout" from="PacMan (unplayable)/Timer" to="PacMan (unplayable)" method="_on_timer_timeout"]
-[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]

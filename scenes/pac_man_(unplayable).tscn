@@ -42,7 +42,8 @@ animations = [{
 [node name="PacMan (unplayable)" type="AnimatedSprite2D" unique_id=1481966996]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_kjvmx")
-frame_progress = 0.24414791
+autoplay = "default"
+frame_progress = 0.9211417
 
 [node name="Label3" type="Label" parent="." unique_id=1683215993]
 offset_left = -100.0
