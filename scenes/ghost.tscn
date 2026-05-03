@@ -400,7 +400,7 @@ script = ExtResource("1_n7aah")
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_t76o2")
 animation = &"dead"
-frame_progress = 0.80510455
+frame_progress = 0.33328146
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1765026737]
 path_desired_distance = 2.0
