@@ -1,137 +1,186 @@
 [gd_scene format=3 uid="uid://4xjtper1r3n0"]
 
 [ext_resource type="Script" uid="uid://u5s0ygillhfw" path="res://scripts/LeaderboardUI_example.gd" id="1_n6nvk"]
-[ext_resource type="Texture2D" uid="uid://c0kx3vwjnloje" path="res://assets/sprites/button/normal.png" id="2_xa581"]
-[ext_resource type="Texture2D" uid="uid://debeud0y27c0i" path="res://assets/sprites/button/pressed.png" id="3_hr3dl"]
-[ext_resource type="Texture2D" uid="uid://6mjlqpcx583" path="res://assets/sprites/button/hovered.png" id="4_jftfo"]
 [ext_resource type="FontFile" uid="uid://cu65lxkp8w5a1" path="res://assets/fonts/PacMan Font.ttf" id="5_hr3dl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hr3dl"]
+line_spacing = 12.0
+font_size = 13
+shadow_size = 0
 
 [node name="Control" type="Control" unique_id=2097240]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_n6nvk")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=860740026]
+layout_mode = 0
+offset_right = 672.0
+offset_bottom = 864.0
+color = Color(0, 0, 0, 1)
+
 [node name="RegisterPanel" type="Panel" parent="." unique_id=1540840061]
 visible = false
 layout_mode = 0
-offset_left = 63.0
-offset_top = 48.0
-offset_right = 614.0
-offset_bottom = 367.0
+offset_left = 67.0
+offset_top = 313.0
+offset_right = 605.0
+offset_bottom = 512.0
 
-[node name="NameInput" type="LineEdit" parent="RegisterPanel" unique_id=308280621]
+[node name="VBoxContainer" type="VBoxContainer" parent="RegisterPanel" unique_id=1166088053]
 layout_mode = 0
-offset_left = 194.0
-offset_top = 124.0
-offset_right = 381.0
-offset_bottom = 155.0
-text = "name reg"
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 534.0
+offset_bottom = 195.0
 
-[node name="PwInput" type="LineEdit" parent="RegisterPanel" unique_id=869235038]
-layout_mode = 0
-offset_left = 196.0
-offset_top = 160.0
-offset_right = 381.0
-offset_bottom = 191.0
-text = "pw"
+[node name="Label" type="Label" parent="RegisterPanel/VBoxContainer" unique_id=1526934575]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hr3dl")
+theme_override_font_sizes/font_size = 32
+text = "REGISTER"
+horizontal_alignment = 1
 
-[node name="RegisterBtn" type="TextureButton" parent="RegisterPanel" unique_id=1949363569]
-layout_mode = 0
-offset_left = 201.0
-offset_top = 197.0
-offset_right = 277.0
-offset_bottom = 218.0
-texture_normal = ExtResource("2_xa581")
-texture_pressed = ExtResource("3_hr3dl")
-texture_hover = ExtResource("4_jftfo")
-stretch_mode = 0
+[node name="HSeparator" type="HSeparator" parent="RegisterPanel/VBoxContainer" unique_id=1316064747]
+layout_mode = 2
 
-[node name="ToLoginBtn" type="TextureButton" parent="RegisterPanel" unique_id=560003073]
-layout_mode = 0
-offset_left = 294.0
-offset_top = 197.0
-offset_right = 370.0
-offset_bottom = 218.0
-texture_normal = ExtResource("2_xa581")
-texture_pressed = ExtResource("3_hr3dl")
-texture_hover = ExtResource("4_jftfo")
-stretch_mode = 0
+[node name="Label2" type="Label" parent="RegisterPanel/VBoxContainer" unique_id=1484637264]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hr3dl")
+theme_override_font_sizes/font_size = 8
+text = "NAME"
+
+[node name="NameInput" type="LineEdit" parent="RegisterPanel/VBoxContainer" unique_id=308280621]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RegisterPanel/VBoxContainer" unique_id=1058945738]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hr3dl")
+theme_override_font_sizes/font_size = 8
+text = "PASSWORD"
+
+[node name="PwInput" type="LineEdit" parent="RegisterPanel/VBoxContainer" unique_id=869235038]
+layout_mode = 2
+
+[node name="RegisterBtn" type="Button" parent="RegisterPanel/VBoxContainer" unique_id=1360761380]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../ToLoginBtn")
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "REGISTER"
+
+[node name="ToLoginBtn" type="Button" parent="RegisterPanel/VBoxContainer" unique_id=342925512]
+layout_mode = 2
+focus_neighbor_top = NodePath("../RegisterBtn")
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "ALREADY HAVE AN ACCOUNT - LOGIN HERE"
 
 [node name="LoginPanel" type="Panel" parent="." unique_id=954065162]
 visible = false
 layout_mode = 0
-offset_left = 80.0
-offset_top = 377.0
-offset_right = 619.0
-offset_bottom = 658.0
+offset_left = 67.0
+offset_top = 313.0
+offset_right = 605.0
+offset_bottom = 512.0
 
-[node name="NameInput" type="LineEdit" parent="LoginPanel" unique_id=1707782977]
+[node name="VBoxContainer" type="VBoxContainer" parent="LoginPanel" unique_id=954753513]
 layout_mode = 0
-offset_left = 175.0
-offset_top = 92.0
-offset_right = 328.0
-offset_bottom = 123.0
-text = "Name"
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 534.0
+offset_bottom = 195.0
 
-[node name="PwInput" type="LineEdit" parent="LoginPanel" unique_id=1225630370]
-layout_mode = 0
-offset_left = 175.0
-offset_top = 127.0
-offset_right = 328.0
-offset_bottom = 158.0
-text = "PW"
+[node name="Label" type="Label" parent="LoginPanel/VBoxContainer" unique_id=2099801571]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hr3dl")
+theme_override_font_sizes/font_size = 32
+text = "LOGIN"
+horizontal_alignment = 1
 
-[node name="LoginBtn" type="TextureButton" parent="LoginPanel" unique_id=884645077]
-layout_mode = 0
-offset_left = 182.0
-offset_top = 167.0
-offset_right = 246.0
-offset_bottom = 187.0
-texture_normal = ExtResource("2_xa581")
-texture_pressed = ExtResource("3_hr3dl")
-texture_hover = ExtResource("4_jftfo")
-stretch_mode = 0
+[node name="HSeparator" type="HSeparator" parent="LoginPanel/VBoxContainer" unique_id=938178549]
+layout_mode = 2
 
-[node name="ToRegisterBtn" type="TextureButton" parent="LoginPanel" unique_id=437936991]
-layout_mode = 0
-offset_left = 256.0
-offset_top = 167.0
-offset_right = 319.0
-offset_bottom = 187.0
-texture_normal = ExtResource("2_xa581")
-texture_pressed = ExtResource("3_hr3dl")
-texture_hover = ExtResource("4_jftfo")
-stretch_mode = 0
+[node name="Label2" type="Label" parent="LoginPanel/VBoxContainer" unique_id=1878260352]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hr3dl")
+theme_override_font_sizes/font_size = 8
+text = "NAME"
+
+[node name="NameInput" type="LineEdit" parent="LoginPanel/VBoxContainer" unique_id=1707782977]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../PwInput")
+
+[node name="Label3" type="Label" parent="LoginPanel/VBoxContainer" unique_id=325664876]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hr3dl")
+theme_override_font_sizes/font_size = 8
+text = "PASSWORD"
+
+[node name="PwInput" type="LineEdit" parent="LoginPanel/VBoxContainer" unique_id=1225630370]
+layout_mode = 2
+focus_neighbor_top = NodePath("../NameInput")
+focus_neighbor_bottom = NodePath("../LoginBtn")
+
+[node name="LoginBtn" type="Button" parent="LoginPanel/VBoxContainer" unique_id=722839976]
+layout_mode = 2
+focus_neighbor_top = NodePath("../PwInput")
+focus_neighbor_bottom = NodePath("../ToRegisterBtn")
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "LOGIN"
+
+[node name="ToRegisterBtn" type="Button" parent="LoginPanel/VBoxContainer" unique_id=1164205034]
+layout_mode = 2
+focus_neighbor_top = NodePath("../LoginBtn")
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "DONT HAVE ONE - CREATE ONE"
 
 [node name="LeaderboardPanel" type="Panel" parent="." unique_id=849550992]
+visible = false
 layout_mode = 0
-offset_left = 21.0
-offset_top = 27.0
-offset_right = 635.0
-offset_bottom = 839.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 646.0
+offset_bottom = 841.0
 
-[node name="TitleLabel" type="Label" parent="LeaderboardPanel" unique_id=1345218096]
+[node name="Top" type="HBoxContainer" parent="LeaderboardPanel" unique_id=561273558]
 layout_mode = 0
-offset_left = 121.0
-offset_top = 13.0
-offset_right = 473.0
-offset_bottom = 45.0
+offset_top = 12.0
+offset_right = 614.0
+offset_bottom = 52.0
+theme_override_constants/separation = 31
+alignment = 1
+
+[node name="BackBtn" type="Button" parent="LeaderboardPanel/Top" unique_id=706812842]
+layout_mode = 2
+focus_neighbor_right = NodePath("../logoutBtn")
+focus_neighbor_bottom = NodePath("../../WebWarn/BoxContainer/HBoxContainer/LinkButton")
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "BACK"
+
+[node name="TitleLabel" type="Label" parent="LeaderboardPanel/Top" unique_id=1345218096]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("5_hr3dl")
 theme_override_font_sizes/font_size = 32
 text = "LEADERBOARD"
 
+[node name="logoutBtn" type="Button" parent="LeaderboardPanel/Top" unique_id=1337273837]
+layout_mode = 2
+focus_neighbor_left = NodePath("../BackBtn")
+focus_neighbor_bottom = NodePath("../../WebWarn/BoxContainer/HBoxContainer/LinkButton")
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "LOGOUT"
+
 [node name="HeaderRow" type="HBoxContainer" parent="LeaderboardPanel" unique_id=1833632227]
 layout_mode = 0
-offset_left = 23.0
+offset_left = 28.0
 offset_top = 52.0
-offset_right = 590.0
+offset_right = 595.0
 offset_bottom = 88.0
 
 [node name="NrCol" type="Label" parent="LeaderboardPanel/HeaderRow" unique_id=1368154057]
-custom_minimum_size = Vector2(93.265, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_hr3dl")
-text = "NR."
+text = "NR"
 
 [node name="NameCol" type="Label" parent="LeaderboardPanel/HeaderRow" unique_id=106935559]
 custom_minimum_size = Vector2(201.435, 0)
@@ -146,6 +195,7 @@ theme_override_fonts/font = ExtResource("5_hr3dl")
 text = "LEVEL"
 
 [node name="ScoreCol" type="Label" parent="LeaderboardPanel/HeaderRow" unique_id=2135383799]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_hr3dl")
 text = "SCORE"
@@ -153,9 +203,9 @@ text = "SCORE"
 [node name="ScrollContainer" type="ScrollContainer" parent="LeaderboardPanel" unique_id=990967533]
 layout_mode = 0
 offset_left = 28.0
-offset_top = 84.0
-offset_right = 569.0
-offset_bottom = 736.0
+offset_top = 89.0
+offset_right = 589.0
+offset_bottom = 730.0
 
 [node name="EntriesBox" type="VBoxContainer" parent="LeaderboardPanel/ScrollContainer" unique_id=598352021]
 layout_mode = 2
@@ -170,33 +220,75 @@ offset_bottom = 744.0
 [node name="PlayerRow" type="HBoxContainer" parent="LeaderboardPanel" unique_id=178877598]
 layout_mode = 0
 offset_left = 28.0
-offset_top = 744.0
+offset_top = 747.0
 offset_right = 572.0
-offset_bottom = 791.0
+offset_bottom = 794.0
 
 [node name="PlayerNr" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=88007268]
-custom_minimum_size = Vector2(93.265, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
 [node name="PlayerName" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=1626495787]
-custom_minimum_size = Vector2(201.435, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="PlayerLevel" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=747630587]
-custom_minimum_size = Vector2(89.845, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
 [node name="PlayerScore" type="Label" parent="LeaderboardPanel/PlayerRow" unique_id=616182829]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-
-[node name="PlayBtn" type="Button" parent="LeaderboardPanel" unique_id=706812842]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 6.0
-offset_right = 79.0
-offset_bottom = 37.0
-theme_override_fonts/font = ExtResource("5_hr3dl")
-text = "PLAY"
 
 [node name="RefreshTimer" type="Timer" parent="LeaderboardPanel" unique_id=933805222]
 wait_time = 10.0
+
+[node name="RefrshLabel" type="Label" parent="LeaderboardPanel" unique_id=1594003518]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 794.0
+offset_right = 618.0
+offset_bottom = 817.0
+theme_override_fonts/font = ExtResource("5_hr3dl")
+text = "REFRESHING IN 15S..."
+horizontal_alignment = 2
+
+[node name="WebWarn" type="Panel" parent="LeaderboardPanel" unique_id=1963688304]
+visible = false
+layout_mode = 0
+offset_left = 28.0
+offset_top = 89.0
+offset_right = 590.0
+offset_bottom = 730.0
+
+[node name="BoxContainer" type="BoxContainer" parent="LeaderboardPanel/WebWarn" unique_id=773375385]
+layout_mode = 0
+offset_right = 562.0
+offset_bottom = 641.0
+alignment = 1
+vertical = true
+
+[node name="Label" type="Label" parent="LeaderboardPanel/WebWarn/BoxContainer" unique_id=163938687]
+custom_minimum_size = Vector2(0, 83.485)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hr3dl")
+theme_override_font_sizes/font_size = 12
+text = "SORRY BUT DUE TO A HARDCODED BUG
+THE LEADERBOARD ISNT ABLE TO GET DISPLAYED HERE
+HOEVER YOU CAN VISIT IT BY CLICKING BELOW"
+label_settings = SubResource("LabelSettings_hr3dl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LeaderboardPanel/WebWarn/BoxContainer" unique_id=1125696425]
+layout_mode = 2
+alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="LeaderboardPanel/WebWarn/BoxContainer/HBoxContainer" unique_id=1755455506]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../../Top/BackBtn")
+theme_override_fonts/font = ExtResource("5_hr3dl")
+action_mode = 0
+text = "VIEW LEADERBOARD IN BROWSER"
+underline = 1
+uri = "https://pacman.gabrielxp.xyz/leaderboard.html"

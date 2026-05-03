@@ -15,6 +15,12 @@
 	✅ Geister implementieren
 	✅ Leaderbord scene adden
 	✅ - Leaderboard Layout Fixen
+	✅ INKY NO MOVEMENT ON SECOND TRY FIXEN!!!!!
+	✅ Logout adden
+	✅ - Leaderboard buttons zu BACK und LOGOUT Ändern!
+	✅ LEADERBOARD
+	✅ 
+	✅ 
 	✅ 
 	✅ 
 	✅ 
@@ -23,8 +29,6 @@
 
 TILE MAP LAYERS REWORKEN!!!
 TELEPORTER FÜR GEISTER FUNKTIONIEREN MACHEN!!!!
-INKY NO MOVEMENT ON SECOND TRY FIXEN!!!!!
-		
 	
 	
 	❎ Geister States implementieren
@@ -32,12 +36,10 @@ INKY NO MOVEMENT ON SECOND TRY FIXEN!!!!!
 	❎ Speed im Tunnel
 	❎ INTRO SCENE ADDEN
 	❎ Title Screen buttons adden
-	❎ Logout adden
-	❎ - Leaderboard buttons zu BACK und LOGOUT Ändern!
 	❎ Kill dings
 	❎ kill combo
 	❎ kirsche und points dings pro level random chance
-	❎ LEADERBOARD
+	❎ 
 
 
 	Dran:

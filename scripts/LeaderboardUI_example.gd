@@ -1,41 +1,20 @@
 extends Control
 
-# ============================================================
-#  LeaderboardUI_example.gd  –  an Root-Control von Leaderboard.tscn
-#
-#  Node-Struktur:
-#
-#  Control
-#  ├── RegisterPanel
-#  │     ├── NameInput, PwInput, RegisterBtn, ToLoginBtn
-#  ├── LoginPanel
-#  │     ├── NameInput, PwInput, LoginBtn, ToRegisterBtn
-#  └── LeaderboardPanel          ← NEU
-#        ├── TitleLabel
-#        ├── HeaderRow (HBoxContainer)
-#        │     ├── NrCol, NameCol, LevelCol, ScoreCol (Labels)
-#        ├── ScrollContainer
-#        │     └── EntriesBox (VBoxContainer)  ← Zeilen werden hier dynamisch eingefügt
-#        ├── Separator (HSeparator)
-#        ├── PlayerRow (HBoxContainer)
-#        │     ├── PlayerNr, PlayerName, PlayerLevel, PlayerScore (Labels)
-#        ├── PlayBtn (Button)  "Spielen"
-#        └── RefreshTimer (Timer)  wait_time=10, autostart=false
-# ============================================================
-
 # ── Register Panel ───────────────────────────────────────────
 @onready var register_panel   = $RegisterPanel
-@onready var reg_name_input   = $RegisterPanel/NameInput
-@onready var reg_pw_input     = $RegisterPanel/PwInput
-@onready var register_btn     = $RegisterPanel/RegisterBtn
-@onready var to_login_btn     = $RegisterPanel/ToLoginBtn
+@onready var reg_name_input   = $RegisterPanel/VBoxContainer/NameInput
+@onready var reg_pw_input     = $RegisterPanel/VBoxContainer/PwInput
+@onready var register_btn     = $RegisterPanel/VBoxContainer/RegisterBtn
+@onready var to_login_btn     = $RegisterPanel/VBoxContainer/ToLoginBtn
+@onready var error_label_reg  = $RegisterPanel/VBoxContainer/Label2
 
 # ── Login Panel ───────────────────────────────────────────────
 @onready var login_panel      = $LoginPanel
-@onready var login_name_input = $LoginPanel/NameInput
-@onready var login_pw_input   = $LoginPanel/PwInput
-@onready var login_btn        = $LoginPanel/LoginBtn
-@onready var to_register_btn  = $LoginPanel/ToRegisterBtn
+@onready var login_name_input = $LoginPanel/VBoxContainer/NameInput
+@onready var login_pw_input   = $LoginPanel/VBoxContainer/PwInput
+@onready var login_btn        = $LoginPanel/VBoxContainer/LoginBtn
+@onready var to_register_btn  = $LoginPanel/VBoxContainer/ToRegisterBtn
+@onready var error_label_login= $LoginPanel/VBoxContainer/Label2
 
 # ── Leaderboard Panel ─────────────────────────────────────────
 @onready var leaderboard_panel = $LeaderboardPanel
@@ -44,14 +23,17 @@ extends Control
 @onready var player_name_label = $LeaderboardPanel/PlayerRow/PlayerName
 @onready var player_level_lbl  = $LeaderboardPanel/PlayerRow/PlayerLevel
 @onready var player_score_lbl  = $LeaderboardPanel/PlayerRow/PlayerScore
-@onready var play_btn          = $LeaderboardPanel/PlayBtn
+@onready var back_btn          = $LeaderboardPanel/Top/BackBtn
+@onready var logout_btn        = $LeaderboardPanel/Top/logoutBtn
 @onready var refresh_timer     = $LeaderboardPanel/RefreshTimer
+@onready var refrsh_label      = $LeaderboardPanel/RefrshLabel
+@onready var web_warn          = $LeaderboardPanel/WebWarn
 
 # ── Interne Farben ────────────────────────────────────────────
-const COLOR_GOLD   := Color(1.0, 0.85, 0.0)   # #1
+const COLOR_GOLD   := Color(1.0, 0.702, 0.0, 1.0)   # #1
 const COLOR_SILVER := Color(0.75, 0.75, 0.75) # #2
 const COLOR_BRONZE := Color(0.8, 0.5, 0.2)    # #3
-const COLOR_PLAYER := Color(0.3, 1.0, 0.5)    # Eigener Eintrag
+const COLOR_PLAYER := Color(0.004, 0.793, 0.0, 1.0)    # Eigener Eintrag
 const COLOR_NORMAL := Color(1, 1, 1)
 
 # ============================================================
@@ -74,7 +56,8 @@ func _ready() -> void:
 	login_btn.pressed.connect(_on_login_pressed)
 	to_login_btn.pressed.connect(_show_login)
 	to_register_btn.pressed.connect(_show_register)
-	play_btn.pressed.connect(_on_play_pressed)
+	back_btn.pressed.connect(_on_back_pressed)
+	logout_btn.pressed.connect(_on_logout_pressed)
 	refresh_timer.timeout.connect(_on_refresh_timer)
 
 	# Alle Panels ausblenden
@@ -90,6 +73,10 @@ func _ready() -> void:
 			# Warte auf player_ready → dann zu Title Screen
 		else:
 			_show_register()
+
+func _process(_delta: float) -> void:
+	if leaderboard_panel.visible == true:
+		refrsh_label.text = "REFRESHING IN " + str(int(round(refresh_timer.time_left))) + "S"
 
 # ============================================================
 #  PANEL HELPER
@@ -115,6 +102,9 @@ func _show_leaderboard_panel() -> void:
 	leaderboard_panel.visible = true
 	Leaderboard.fetch_leaderboard()
 	refresh_timer.start()
+	if OS.has_feature("web"):
+		web_warn.visible = true
+		refrsh_label.visible = false
 
 # ============================================================
 #  LEADERBOARD ANZEIGE
@@ -126,7 +116,7 @@ func _on_leaderboard_loaded(entries: Array, player_rank: int, player_entry: Dict
 		child.queue_free()
 
 	# Einträge aufbauen
-	var show_count = min(entries.size(), 17)
+	var show_count = min(entries.size(), 50)
 	for i in show_count:
 		var entry = entries[i]
 		var rank   = i + 1
@@ -183,7 +173,7 @@ func _on_leaderboard_loaded(entries: Array, player_rank: int, player_entry: Dict
 
 	print("[LeaderboardScene] Leaderboard angezeigt | %d Einträge | Rank: %s" % [entries.size(), rank_text])
 
-func _make_label(text_val: String, min_w: int, bold: bool) -> Label:
+func _make_label(text_val: String, min_w: int, _bold: bool) -> Label:
 	var lbl := Label.new()
 	lbl.text = text_val
 	lbl.custom_minimum_size.x = min_w
@@ -229,10 +219,16 @@ func _on_login_pressed() -> void:
 
 func _on_register_failed(reason: String) -> void:
 	push_error("[LeaderboardScene] Register fehlgeschlagen: " + reason)
+	reason = reason.to_upper()
+	error_label_reg.text = "NAME - " + str(reason)
+	error_label_reg.add_theme_color_override("font_color", Color(0.765, 0.0, 0.0, 1.0))
 	_show_register()
 
 func _on_login_failed(reason: String) -> void:
 	push_error("[LeaderboardScene] Login fehlgeschlagen: " + reason)
+	reason = reason.to_upper()
+	error_label_login.text = "NAME - " + str(reason)
+	error_label_login.add_theme_color_override("font_color", Color(0.765, 0.0, 0.0, 1.0))
 	_show_login()
 
 func _on_highscore_updated(new_score: int) -> void:
@@ -242,10 +238,10 @@ func _on_error(error: String) -> void:
 	push_error("[LeaderboardScene] Fehler: " + error)
 
 # ── "Spielen" Button ─────────────────────────────────────────
-func _on_play_pressed() -> void:
+func _on_back_pressed() -> void:
 	Leaderboard.opened_from_menu = false
 	refresh_timer.stop()
-	GameStateManager.updategamestate(2)
+	GameStateManager.updategamestate(0)
 
 # ── Optional: Ausloggen ───────────────────────────────────────
 func _on_logout_pressed() -> void:
