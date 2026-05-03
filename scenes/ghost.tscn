@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://cbxylimuiulnp" path="res://assets/sprites/Ghosts/Inky/Inky (RIght).png" id="11_bj4ww"]
 [ext_resource type="Texture2D" uid="uid://qg0tnw5fsolj" path="res://assets/sprites/Ghosts/Inky/Inky (Down).png" id="12_f8b1n"]
 [ext_resource type="Texture2D" uid="uid://d2gb3k21l5iqo" path="res://assets/sprites/Ghosts/Inky/Inky (Left).png" id="13_3ittg"]
+[ext_resource type="Texture2D" uid="uid://cl2gjab8v4sew" path="res://assets/sprites/Ghosts/Arcade - Pac-Man - General Sprites - Blue Ghost.png" id="18_f8b1n"]
+[ext_resource type="Texture2D" uid="uid://dkixtj22b0fnb" path="res://assets/sprites/Ghosts/part-Slice 1.png" id="19_3ittg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uehw0"]
 atlas = ExtResource("5_wj1r3")
@@ -145,6 +147,30 @@ region = Rect2(0, 0, 14, 14)
 [sub_resource type="AtlasTexture" id="AtlasTexture_68ei1"]
 atlas = ExtResource("9_o57ao")
 region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lovad"]
+atlas = ExtResource("18_f8b1n")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8iae"]
+atlas = ExtResource("18_f8b1n")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bjay"]
+atlas = ExtResource("19_3ittg")
+region = Rect2(1, 0, 15, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0axvc"]
+atlas = ExtResource("19_3ittg")
+region = Rect2(16, 0, 15, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyfvc"]
+atlas = ExtResource("19_3ittg")
+region = Rect2(31, 0, 15, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s14g"]
+atlas = ExtResource("19_3ittg")
+region = Rect2(46, 0, 15, 14)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t76o2"]
 animations = [{
@@ -323,6 +349,34 @@ animations = [{
 "loop": true,
 "name": &"3_4",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lovad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8iae")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bjay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0axvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyfvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s14g")
+}],
+"loop": true,
+"name": &"frigthend",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7aah"]
@@ -334,6 +388,9 @@ radius = 52.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_4pqta"]
 radius = 85.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0uf5"]
+radius = 8.0
+
 [node name="Ghost" type="CharacterBody2D" unique_id=1325077530]
 collision_layer = 0
 collision_mask = 0
@@ -342,7 +399,8 @@ script = ExtResource("1_n7aah")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1098293925]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_t76o2")
-animation = &"2_4"
+animation = &"dead"
+frame_progress = 0.80510455
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1765026737]
 path_desired_distance = 2.0
@@ -388,8 +446,20 @@ visible = false
 shape = SubResource("CircleShape2D_4pqta")
 debug_color = Color(0.9717571, 0, 0.4490255, 0.41960785)
 
+[node name="PhaseTimer" type="Timer" parent="." unique_id=772094652]
+
+[node name="Respawn" type="Area2D" parent="." unique_id=1582509278]
+collision_layer = 0
+collision_mask = 536870912
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn" unique_id=124160864]
+shape = SubResource("CircleShape2D_p0uf5")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CheckTimer" to="." method="_on_check_timer_timeout"]
 [connection signal="area_shape_entered" from="KillCollidorArea" to="." method="_on_kill_collidor_area_area_shape_entered"]
 [connection signal="area_entered" from="Inner Circle" to="." method="_on_inner_circle_area_entered"]
 [connection signal="area_exited" from="OuterCircle" to="." method="_on_outer_circle_area_exited"]
+[connection signal="timeout" from="PhaseTimer" to="." method="_on_phase_timer_timeout"]
+[connection signal="body_entered" from="Respawn" to="." method="_on_respawn_body_entered"]
+[connection signal="body_exited" from="Respawn" to="." method="_on_respawn_body_exited"]

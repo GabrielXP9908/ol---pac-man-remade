@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://rllmhe4tr5o7" path="res://scripts/game_manager.gd" id="1_uf85h"]
 [ext_resource type="Script" uid="uid://ccotwqufys4r5" path="res://scripts/SupabaseLeaderboard.gd" id="2_wu3ti"]
 [ext_resource type="Script" uid="uid://bb74b2ie3o3l7" path="res://scripts/game_state_manager.gd" id="3_wu3ti"]
+[ext_resource type="Script" uid="uid://c4fb70xio38eo" path="res://scripts/frigthend_timer.gd" id="4_y8y8d"]
 
 [node name="Globals" type="Node" unique_id=1473848109]
 
@@ -18,3 +19,6 @@ unique_name_in_owner = true
 script = ExtResource("3_wu3ti")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1733415263]
+
+[node name="FrigthendTimer" type="Timer" parent="." unique_id=535602246]
+script = ExtResource("4_y8y8d")

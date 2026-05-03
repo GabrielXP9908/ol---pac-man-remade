@@ -39,7 +39,7 @@
 [ext_resource type="Script" uid="uid://dugco2ffkybq2" path="res://scripts/fpscounter_dev.gd" id="36_q4oe8"]
 [ext_resource type="Script" uid="uid://b06t4uxdpnibf" path="res://scripts/four_tiles.gd" id="37_svjb4"]
 [ext_resource type="Script" uid="uid://cdx7xqxuqkhx7" path="res://scripts/two_tiles_inky.gd" id="38_c1pbi"]
-[ext_resource type="Texture2D" uid="uid://5tvga4b2whre" path="res://assets/sprites/PacMan/pacman_up.png" id="39_535f6"]
+[ext_resource type="Script" uid="uid://b3sal0x7vcipg" path="res://scripts/anticamp_timer.gd" id="40_535f6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v3why"]
 
@@ -585,6 +585,9 @@ animations = [{
 "name": &"9",
 "speed": 0.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_535f6"]
+radius = 14.0
 
 [node name="Level" type="Node2D" unique_id=373382970]
 
@@ -1437,29 +1440,29 @@ animation = &"9"
 
 [node name="AI" type="Node2D" parent="." unique_id=518073429]
 
-[node name="Blinky" parent="AI" unique_id=423937426 node_paths=PackedStringArray("Goal") instance=ExtResource("34_v3why")]
-position = Vector2(288, 147)
-Goal = NodePath("../../PacMan")
+[node name="Blinky" parent="AI" unique_id=423937426 node_paths=PackedStringArray("Hunting_Goal") instance=ExtResource("34_v3why")]
+position = Vector2(288, 131)
+Hunting_Goal = NodePath("../NavPoints/PacManLocationTracker")
 house_x = 288.0
 house_y = 153.0
 
-[node name="Pinky" parent="AI" unique_id=276072950 node_paths=PackedStringArray("Goal") instance=ExtResource("34_v3why")]
-position = Vector2(288, 159)
-Goal = NodePath("../NavPoints/four-tiles")
+[node name="Pinky" parent="AI" unique_id=276072950 node_paths=PackedStringArray("Hunting_Goal") instance=ExtResource("34_v3why")]
+position = Vector2(288, 155)
+Hunting_Goal = NodePath("../NavPoints/four-tiles")
 GhostType = 1
 house_x = 288.0
 house_y = 159.0
 
-[node name="Inky" parent="AI" unique_id=1325077530 node_paths=PackedStringArray("Goal") instance=ExtResource("34_v3why")]
-position = Vector2(304, 159)
-Goal = NodePath("../NavPoints/two-tiles-inky")
+[node name="Inky" parent="AI" unique_id=1325077530 node_paths=PackedStringArray("Hunting_Goal") instance=ExtResource("34_v3why")]
+position = Vector2(304, 155)
+Hunting_Goal = NodePath("../NavPoints/two-tiles-inky")
 GhostType = 2
 house_x = 304.0
 house_y = 159.0
 
-[node name="Clyde" parent="AI" unique_id=1051087446 node_paths=PackedStringArray("Goal") instance=ExtResource("34_v3why")]
-position = Vector2(272, 159)
-Goal = NodePath("../../PacMan")
+[node name="Clyde" parent="AI" unique_id=1051087446 node_paths=PackedStringArray("Hunting_Goal") instance=ExtResource("34_v3why")]
+position = Vector2(272, 155)
+Hunting_Goal = NodePath("../NavPoints/PacManLocationTracker")
 GhostType = 3
 house_x = 273.0
 house_y = 153.0
@@ -1476,6 +1479,102 @@ texture = ExtResource("35_q4oe8")
 
 [node name="NavPoints" type="Node2D" parent="AI" unique_id=38737128]
 unique_name_in_owner = true
+
+[node name="Blinky" type="Node2D" parent="AI/NavPoints" unique_id=1219649412]
+
+[node name="1" type="Node2D" parent="AI/NavPoints/Blinky" unique_id=1806172937]
+position = Vector2(188, 50)
+
+[node name="2" type="Node2D" parent="AI/NavPoints/Blinky" unique_id=1516961169]
+position = Vector2(228, 74)
+
+[node name="3" type="Node2D" parent="AI/NavPoints/Blinky" unique_id=1679133018]
+position = Vector2(220, 106)
+
+[node name="4" type="Node2D" parent="AI/NavPoints/Blinky" unique_id=1936791428]
+position = Vector2(252, 106)
+
+[node name="5" type="Node2D" parent="AI/NavPoints/Blinky" unique_id=50460559]
+position = Vector2(276, 74)
+
+[node name="6" type="Node2D" parent="AI/NavPoints/Blinky" unique_id=2041496783]
+position = Vector2(276, 50)
+
+[node name="7" type="Node2D" parent="AI/NavPoints/Blinky" unique_id=684812337]
+position = Vector2(260, 50)
+
+[node name="8" type="Node2D" parent="AI/NavPoints/Blinky" unique_id=1503519946]
+position = Vector2(260, 106)
+
+[node name="9" type="Node2D" parent="AI/NavPoints/Blinky" unique_id=1635168736]
+position = Vector2(196, 82)
+
+[node name="10" type="Node2D" parent="AI/NavPoints/Blinky" unique_id=2103294330]
+position = Vector2(284, 82)
+
+[node name="Pinky" type="Node2D" parent="AI/NavPoints" unique_id=1801219855]
+
+[node name="1" type="Node2D" parent="AI/NavPoints/Pinky" unique_id=125739352]
+position = Vector2(348, 82)
+
+[node name="2" type="Node2D" parent="AI/NavPoints/Pinky" unique_id=27206791]
+position = Vector2(292, 82)
+
+[node name="3" type="Node2D" parent="AI/NavPoints/Pinky" unique_id=231914273]
+position = Vector2(324, 98)
+
+[node name="4" type="Node2D" parent="AI/NavPoints/Pinky" unique_id=320704573]
+position = Vector2(372, 106)
+
+[node name="5" type="Node2D" parent="AI/NavPoints/Pinky" unique_id=654265914]
+position = Vector2(388, 82)
+
+[node name="6" type="Node2D" parent="AI/NavPoints/Pinky" unique_id=2128287437]
+position = Vector2(388, 58)
+
+[node name="7" type="Node2D" parent="AI/NavPoints/Pinky" unique_id=435982835]
+position = Vector2(356, 50)
+
+[node name="8" type="Node2D" parent="AI/NavPoints/Pinky" unique_id=539460856]
+position = Vector2(316, 50)
+
+[node name="9" type="Node2D" parent="AI/NavPoints/Pinky" unique_id=983331638]
+position = Vector2(300, 66)
+
+[node name="10" type="Node2D" parent="AI/NavPoints/Pinky" unique_id=925068861]
+position = Vector2(300, 66)
+
+[node name="Inky" type="Node2D" parent="AI/NavPoints" unique_id=1620239112]
+
+[node name="1" type="Node2D" parent="AI/NavPoints/Inky" unique_id=1814235221]
+position = Vector2(380, 202)
+
+[node name="2" type="Node2D" parent="AI/NavPoints/Inky" unique_id=857645975]
+position = Vector2(380, 226)
+
+[node name="3" type="Node2D" parent="AI/NavPoints/Inky" unique_id=507442135]
+position = Vector2(364, 250)
+
+[node name="4" type="Node2D" parent="AI/NavPoints/Inky" unique_id=422589710]
+position = Vector2(356, 274)
+
+[node name="5" type="Node2D" parent="AI/NavPoints/Inky" unique_id=789035835]
+position = Vector2(316, 250)
+
+[node name="6" type="Node2D" parent="AI/NavPoints/Inky" unique_id=1947958587]
+position = Vector2(300, 258)
+
+[node name="7" type="Node2D" parent="AI/NavPoints/Inky" unique_id=494661734]
+position = Vector2(324, 202)
+
+[node name="8" type="Node2D" parent="AI/NavPoints/Inky" unique_id=783133663]
+position = Vector2(348, 234)
+
+[node name="9" type="Node2D" parent="AI/NavPoints/Inky" unique_id=107814357]
+position = Vector2(308, 226)
+
+[node name="10" type="Node2D" parent="AI/NavPoints/Inky" unique_id=1227147836]
+position = Vector2(372, 274)
 
 [node name="Clyde" type="Node2D" parent="AI/NavPoints" unique_id=7966344]
 
@@ -1519,8 +1618,13 @@ script = ExtResource("37_svjb4")
 [node name="two-tiles-inky" type="Node2D" parent="AI/NavPoints" unique_id=1696780380]
 script = ExtResource("38_c1pbi")
 
-[node name="Sprite2D" type="Sprite2D" parent="AI/NavPoints/two-tiles-inky" unique_id=1209062083]
-texture = ExtResource("39_535f6")
+[node name="House" type="CharacterBody2D" parent="AI/NavPoints" unique_id=2146026646]
+position = Vector2(288, 148)
+collision_layer = 536870912
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/NavPoints/House" unique_id=517375143]
+shape = SubResource("CircleShape2D_535f6")
 
 [node name="DEV_FPS_counter" type="Label" parent="." unique_id=1459789075]
 offset_left = 52.0
@@ -1533,9 +1637,17 @@ script = ExtResource("36_q4oe8")
 position = Vector2(288, 162)
 zoom = Vector2(3, 3)
 
+[node name="AntiCampTimer" type="Timer" parent="." unique_id=842423178]
+unique_name_in_owner = true
+wait_time = 4.0
+one_shot = true
+autostart = true
+script = ExtResource("40_535f6")
+
 [connection signal="area_entered" from="TileMapLayer/TeleporterLeft" to="TileMapLayer" method="_on_teleporter_left_area_entered"]
 [connection signal="body_entered" from="TileMapLayer/TeleporterLeft" to="TileMapLayer" method="_on_teleporter_left_body_entered"]
 [connection signal="area_entered" from="TileMapLayer/TeleporterRight" to="TileMapLayer" method="_on_teleporter_right_area_entered"]
 [connection signal="body_entered" from="TileMapLayer/TeleporterRight" to="TileMapLayer" method="_on_teleporter_right_body_entered"]
+[connection signal="timeout" from="AntiCampTimer" to="AntiCampTimer" method="_on_timeout"]
 
 [editable path="AI/Clyde"]

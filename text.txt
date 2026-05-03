@@ -19,7 +19,7 @@
 	✅ - Leaderboard buttons zu BACK und LOGOUT Ändern!
 	✅ LEADERBOARD
 	✅ Title Screen buttons adden
-	✅ 
+	✅ Geister States implementieren
 	✅ 
 	✅ 
 	✅ 
@@ -27,9 +27,7 @@
 
 TELEPORTER FÜR GEISTER FUNKTIONIEREN MACHEN!!!!
 	
-	❎ Geister States implementieren
 	❎ Movement Speed koreewkt (ChatGPT & research)
-	❎ Speed im Tunnel
 	❎ INTRO SCENE ADDEN
 	❎ Kill dings
 	❎ kill combo

@@ -21,6 +21,7 @@ GameManager="*uid://rllmhe4tr5o7"
 DevExitGame="*uid://by501hgatujjw"
 Leaderboard="*uid://ccotwqufys4r5"
 GameStateManager="*uid://bb74b2ie3o3l7"
+FT="*uid://c4fb70xio38eo"
 
 [display]
 

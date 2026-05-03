@@ -14,10 +14,20 @@ var pacman_y: float
 var pacman_direction: int
 var Blinky_pos: Vector2
 
+var released_ghost: int = 0
+# 1 = Blinky
+# 2 = Pinky
+# 3 = Inky
+# 4 = Clyde
+var frigthend: bool = false
+
 #signal scoreUpdated(new_score: int)
 #signal highScoreUpdated(new_highscore: int)
 signal killPacMan()
 signal gameOver(score: int, level: int)
+signal releaseNewGhostAsAntiCamp()
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,6 +40,11 @@ func _process(_delta: float) -> void:
 		levels_capped = levels
 	updateHighScore()
 	levelcompletecheck()
+	
+	if FT.time_left == 0:
+		frigthend = false
+	else:
+		frigthend = true
 
 func updateScore(operation: String, count: int):
 	if (operation=="add"):
