@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const speed = 1700
-const debug = true
+const debug = false
 
 enum Ghost {
 	Blinky,
@@ -50,6 +50,8 @@ var GisFREE: bool = false
 var PhaseCounter: int = 0
 var CFakeScatter: bool = false
 
+var deadinthiscombo: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Event Connects
@@ -58,6 +60,7 @@ func _ready() -> void:
 	
 	GameManager.killPacMan.connect(on_pacman_death)
 	GameManager.releaseNewGhostAsAntiCamp.connect(force_release)
+	GameManager.newcombo.connect(newcombo)
 	
 	# Debug Paths
 	if debug:
@@ -135,9 +138,9 @@ func _process(delta: float) -> void:
 		move_and_slide()
 	
 	# Animation Play
-	if Phase != Phases.Frigthend:
+	if !GameManager.frigthend and !dead:
 		$AnimatedSprite2D.play(str(GhostType)+"_"+str(get_nav_direction()))
-	elif Phase == Phases.Frigthend:
+	elif GameManager.frigthend and !dead and !deadinthiscombo:
 		$AnimatedSprite2D.play("frigthend")
 	elif dead:
 		$AnimatedSprite2D.play("dead")
@@ -148,6 +151,8 @@ func _on_timer_timeout() -> void:
 		Goal = get_node("/root/Level/AI/NavPoints/" + named_ghost + "/" + str(randi_range(1,10)))
 	elif (Phase == Phases.Hunt):
 		Goal = Hunting_Goal
+	elif (Phase == Phases.Frigthend):
+		Goal = get_node("/root/Level/AI/NavPoints/Frigthend/" + str(randi_range(1,13)))
 	
 	
 	
@@ -172,8 +177,10 @@ func get_nav_direction() -> int:
 func _on_kill_collidor_area_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if area.has_method("isPacMan") and !GameManager.frigthend:
 		GameManager.PacManDieNow()
-	elif area.has_method("isPacMan") and GameManager.frigthend:
+	elif area.has_method("isPacMan") and GameManager.frigthend and !dead and !deadinthiscombo:
 		dead = true
+		deadinthiscombo = true
+		GameManager.combo += 1
 
 # PacMan Death event
 func on_pacman_death():
@@ -213,7 +220,7 @@ func teleporter(entered_map_side: String):
 	elif (entered_map_side == "right"):
 		position = Vector2(175, 154)
 	else:
-		print("Error in pac_man.gd/func teleporter")
+		print("Error in ghost_Manager.gd/func teleporter")
 		print(entered_map_side + "is not a valid side input!")
 		print("Valid ones are 'left', 'right'")
 	
@@ -325,3 +332,7 @@ func _on_respawn_body_entered(body: Node2D) -> void:
 
 func _on_respawn_body_exited(body: Node2D) -> void:
 	home = false
+
+func newcombo() -> void:
+	if !dead:
+		deadinthiscombo = false

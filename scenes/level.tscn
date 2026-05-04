@@ -659,7 +659,7 @@ script = ExtResource("5_2r41h")
 
 [node name="TeleporterLeft" type="Area2D" parent="TileMapLayer" unique_id=767803121]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 8388612
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/TeleporterLeft" unique_id=1607900816]
 position = Vector2(-12, 116)
@@ -668,7 +668,7 @@ debug_color = Color(0.58288574, 0.29204538, 1.92523e-07, 0.41960785)
 
 [node name="TeleporterRight" type="Area2D" parent="TileMapLayer" unique_id=394657926]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 8388612
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/TeleporterRight" unique_id=1576936501]
 position = Vector2(236, 116)
@@ -1625,6 +1625,47 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AI/NavPoints/House" unique_id=517375143]
 shape = SubResource("CircleShape2D_535f6")
+
+[node name="Frigthend" type="Node2D" parent="AI/NavPoints" unique_id=1711571262]
+
+[node name="1" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=169731484]
+position = Vector2(288, -368)
+
+[node name="2" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=1925982992]
+position = Vector2(952, 144)
+
+[node name="3" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=1222833409]
+position = Vector2(288, 552)
+
+[node name="4" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=1792100013]
+position = Vector2(-232, 144)
+
+[node name="5" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=1123974765]
+position = Vector2(-232, -184)
+
+[node name="6" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=1611102714]
+position = Vector2(56, -336)
+
+[node name="7" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=807650286]
+position = Vector2(696, -248)
+
+[node name="8" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=1513432685]
+position = Vector2(872, -136)
+
+[node name="9" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=988357796]
+position = Vector2(872, 368)
+
+[node name="10" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=1611474672]
+position = Vector2(640, 560)
+
+[node name="11" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=1044475910]
+position = Vector2(56, 560)
+
+[node name="12" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=833262172]
+position = Vector2(-112, 344)
+
+[node name="13" type="Node2D" parent="AI/NavPoints/Frigthend" unique_id=1577379360]
+position = Vector2(-344, 568)
 
 [node name="DEV_FPS_counter" type="Label" parent="." unique_id=1459789075]
 offset_left = 52.0

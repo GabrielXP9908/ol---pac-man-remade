@@ -21,4 +21,5 @@ script = ExtResource("3_wu3ti")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1733415263]
 
 [node name="FrigthendTimer" type="Timer" parent="." unique_id=535602246]
+one_shot = true
 script = ExtResource("4_y8y8d")

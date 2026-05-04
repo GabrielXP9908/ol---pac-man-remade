@@ -20,18 +20,16 @@
 	✅ LEADERBOARD
 	✅ Title Screen buttons adden
 	✅ Geister States implementieren
-	✅ 
-	✅ 
-	✅ 
+	✅ kill combo
+	✅ Kill dings
+	✅ TELEPORTER FÜR GEISTER FUNKTIONIEREN MACHEN!!!!
 	✅ 
 
-TELEPORTER FÜR GEISTER FUNKTIONIEREN MACHEN!!!!
-	
-	❎ Movement Speed koreewkt (ChatGPT & research)
-	❎ INTRO SCENE ADDEN
-	❎ Kill dings
-	❎ kill combo
-	❎ kirsche und points dings pro level random chance
+
+	. Movement Speed koreewkt (ChatGPT & research)
+	. INTRO SCENE ADDEN
+	. kirsche und points dings pro level random chance
+
 
 	1ste done = immer laufen auch aus käfig
 	2te in arbeit = nur außerhalb von käfig

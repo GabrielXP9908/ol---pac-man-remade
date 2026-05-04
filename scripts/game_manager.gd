@@ -20,6 +20,11 @@ var released_ghost: int = 0
 # 3 = Inky
 # 4 = Clyde
 var frigthend: bool = false
+var combo: int = 0
+var last_combo: int = 0
+var last_time: float = 0.0
+
+signal newcombo()
 
 #signal scoreUpdated(new_score: int)
 #signal highScoreUpdated(new_highscore: int)
@@ -36,15 +41,40 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	
+	if combo > last_combo:
+		if combo == 1:
+			score += 200
+		elif combo == 2:
+			score += 400
+		elif combo == 3:
+			score += 800
+		elif combo == 4:
+			score += 1200
+		last_combo = combo
+	
+	
+	#print(combo)
+	
 	if (levels > 0 and levels < 20):
 		levels_capped = levels
 	updateHighScore()
 	levelcompletecheck()
 	
+	if last_time < FT.time_left:
+		newcombo.emit()
+		combo = 0
+		last_combo = 0
+	
+	last_time = FT.time_left
+	
 	if FT.time_left == 0:
 		frigthend = false
+		combo = 0
+		last_combo = 0
 	else:
 		frigthend = true
+
 
 func updateScore(operation: String, count: int):
 	if (operation=="add"):

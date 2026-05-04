@@ -148,14 +148,6 @@ region = Rect2(0, 0, 14, 14)
 atlas = ExtResource("9_o57ao")
 region = Rect2(14, 0, 14, 14)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lovad"]
-atlas = ExtResource("18_f8b1n")
-region = Rect2(0, 0, 14, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y8iae"]
-atlas = ExtResource("18_f8b1n")
-region = Rect2(14, 0, 14, 14)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bjay"]
 atlas = ExtResource("19_3ittg")
 region = Rect2(1, 0, 15, 14)
@@ -171,6 +163,14 @@ region = Rect2(31, 0, 15, 14)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4s14g"]
 atlas = ExtResource("19_3ittg")
 region = Rect2(46, 0, 15, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lovad"]
+atlas = ExtResource("18_f8b1n")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8iae"]
+atlas = ExtResource("18_f8b1n")
+region = Rect2(14, 0, 14, 14)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t76o2"]
 animations = [{
@@ -352,17 +352,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lovad")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y8iae")
-}],
-"loop": true,
-"name": &"dead",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_2bjay")
 }, {
 "duration": 1.0,
@@ -375,8 +364,19 @@ animations = [{
 "texture": SubResource("AtlasTexture_4s14g")
 }],
 "loop": true,
-"name": &"frigthend",
+"name": &"dead",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lovad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8iae")
+}],
+"loop": true,
+"name": &"frigthend",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7aah"]
@@ -391,16 +391,18 @@ radius = 85.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0uf5"]
 radius = 8.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_f8b1n"]
+radius = 6.0827627
+
 [node name="Ghost" type="CharacterBody2D" unique_id=1325077530]
-collision_layer = 0
+collision_layer = 8388608
 collision_mask = 0
 script = ExtResource("1_n7aah")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1098293925]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_t76o2")
-animation = &"dead"
-frame_progress = 0.33328146
+animation = &"frigthend"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1765026737]
 path_desired_distance = 2.0
@@ -454,6 +456,10 @@ collision_mask = 536870912
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn" unique_id=124160864]
 shape = SubResource("CircleShape2D_p0uf5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741206296]
+shape = SubResource("CircleShape2D_f8b1n")
+debug_color = Color(0.7886034, 0.0995544, 0.9999998, 0.41960785)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CheckTimer" to="." method="_on_check_timer_timeout"]
