@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const speed = 1700
-const debug = false
+const debug = true
 
 enum Ghost {
 	Blinky,
